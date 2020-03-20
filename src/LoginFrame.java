@@ -3,6 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
 
 
@@ -58,21 +60,24 @@ public class LoginFrame extends JFrame implements ActionListener {
         showPassword.addActionListener(this);
     }
     @Override
-    public void actionPerformed(@org.jetbrains.annotations.NotNull ActionEvent actionEvent) {
+    public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == loginButton) {
             String userText;
-            char[] pwdText;
-            char[] correctPwd;
+            String pwdText;
             userText = userTextField.getText();
-            pwdText = passField.getPassword();
-            correctPwd = new char[] {'a','d','m','i','n'};
-            if (Arrays.equals(pwdText, correctPwd)) {
-                System.out.println("Password Correct");
+            pwdText = passField.getText();
+            try {
+                if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
+                    JOptionPane.showMessageDialog(this, "Correct Login");
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Incorrect Login");
+                }
+            } catch (InvalidKeySpecException e) {
+                e.printStackTrace();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
             }
-            else {
-                JOptionPane.showMessageDialog(this, "Incorrect Login");
-            }
-            Arrays.fill(correctPwd, '0');
         }
         if (actionEvent.getSource() == resetButton) {
             userTextField.setText("");

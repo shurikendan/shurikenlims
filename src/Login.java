@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class Login {
-    public static void main(String[] args) {
+    public static void main() {
         LoginFrame frame = new LoginFrame();
         frame.setTitle("Shuriken LIMS");
         frame.setVisible(true);
