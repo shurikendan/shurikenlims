@@ -6,11 +6,14 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
 public class Ada {
+    //Main method returns hashed password
     public static String main(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
         String ogPwd = password;
         String hash = genHash(ogPwd);
         return hash;
     }
+
+    //Generates hash, including iterations and salt from raw password
     private static String genHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
         int iterations = 1000;
         char[] chars = password.toCharArray();
@@ -21,12 +24,16 @@ public class Ada {
         byte[] hash = skf.generateSecret(spec).getEncoded();
         return iterations + ":" + toHex(salt) + ":" + toHex(hash);
     }
+
+    //Generates salt
     private static byte[] getSalt() throws NoSuchAlgorithmException {
         SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
         byte[] salt = new byte[16];
         sr.nextBytes(salt);
         return salt;
     }
+
+    //Converts a String (generated hash) to hex
     private static String toHex(byte[] array) throws NoSuchAlgorithmException {
         BigInteger bi = new BigInteger(1, array);
         String hex = bi.toString(16);
@@ -38,6 +45,8 @@ public class Ada {
             return hex;
         }
     }
+
+    //Checks an entered password against the stored password
     public static boolean validatePassword(String passwordInput, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException {
         String[] parts = storedPassword.split(":");
         int iterations = Integer.parseInt(parts[0]);
@@ -53,6 +62,8 @@ public class Ada {
         }
         return diff == 0;
     }
+
+    //Translates hex back into a String
     private static byte[] fromHex(String hex) throws NoSuchAlgorithmException {
         byte[] bytes = new byte[hex.length() / 2];
         for (int i = 0; i < bytes.length; i++) {

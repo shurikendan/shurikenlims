@@ -3,6 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
@@ -11,6 +13,7 @@ import java.util.Arrays;
 public class LoginFrame extends JFrame implements ActionListener {
     //Container that holds all the elements
     Container container = getContentPane();
+    //Creating instances of elements
     JLabel userLabel = new JLabel("Username");
     JLabel passLabel = new JLabel("Password");
     JTextField userTextField = new JTextField();
@@ -18,17 +21,20 @@ public class LoginFrame extends JFrame implements ActionListener {
     JButton loginButton = new JButton("Log in");
     JButton resetButton = new JButton("Reset");
     JCheckBox showPassword = new JCheckBox("Show Password");
-    //Constructor
+    JLabel registerLabel = new JLabel("Register New User");
+    //Constructor (calling all the other methods)
     LoginFrame() {
         setLayoutManager();
         setLocationAndSize();
         addComponentsToContainer();
         addActionEvent();
     }
+
     //Setting bounds manually, so don't need a layout manager
     public void setLayoutManager() {
         container.setLayout(null);
     }
+
     //Setting the bounds for all the elements
     public void setLocationAndSize() {
         //Username elements
@@ -43,6 +49,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         loginButton.setBounds(50,180,100,30);
         resetButton.setBounds(200,180,100,30);
     }
+
     //Adds all the components to the container
     public void addComponentsToContainer() {
         container.add(userLabel);
@@ -53,41 +60,57 @@ public class LoginFrame extends JFrame implements ActionListener {
         container.add(resetButton);
         container.add(showPassword);
     }
+
     //Adds event listeners to the necessary elements
     public void addActionEvent() {
         loginButton.addActionListener(this);
         resetButton.addActionListener(this);
         showPassword.addActionListener(this);
     }
+
+    //Controls the actions of the login, reset and show password buttons
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
+        //If the event come from the login button...
         if (actionEvent.getSource() == loginButton) {
             String userText;
             String pwdText;
+            //Get whatever's inside the username and password fields
             userText = userTextField.getText();
             pwdText = passField.getText();
             try {
+                //Checks if the login is correct
                 if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
+                    //And displays message (temporary) //TODO
                     JOptionPane.showMessageDialog(this, "Correct Login");
                 }
                 else {
+                    //If it's not correct, show error message.
                     JOptionPane.showMessageDialog(this, "Incorrect Login");
                 }
-            } catch (InvalidKeySpecException e) {
+            }
+            catch (InvalidKeySpecException e) {
                 e.printStackTrace();
-            } catch (NoSuchAlgorithmException e) {
+            }
+            catch (NoSuchAlgorithmException e) {
                 e.printStackTrace();
             }
         }
+        //If the event comes from the reset button...
         if (actionEvent.getSource() == resetButton) {
+            //Set the text inside the fields to be blank
             userTextField.setText("");
             passField.setText("");
         }
+        //If the event comes from the show password button...
         if (actionEvent.getSource() == showPassword) {
+            //If the button is selected...
             if (showPassword.isSelected()) {
+                //Change the characters to be readable
                 passField.setEchoChar((char) 0);
             }
             else {
+                //Change the characters to unreadable
                 passField.setEchoChar('*');
             }
         }
