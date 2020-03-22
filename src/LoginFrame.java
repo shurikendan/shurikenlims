@@ -81,7 +81,7 @@ public class LoginFrame extends JFrame implements ActionListener {
             try {
                 //Checks if the login is correct
                 if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
-                    //And displays message (temporary) //TODO
+                    //And displays message (temporary) //TODO change this once developed
                     JOptionPane.showMessageDialog(this, "Correct Login");
                 }
                 else {

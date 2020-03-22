@@ -21,8 +21,8 @@ public class UserData {
 
     //Adds a username and password to the UserMap
     public void registerUser(String username, String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
-        String passwordHash = password;
-        userMap.put(username, passwordHash); //TODO change this to hashed password
+        String passwordHash = Ada.main(password);
+        userMap.put(username, passwordHash);
     }
 
     //Checks if username and password match
@@ -32,6 +32,6 @@ public class UserData {
             return false;
         }
         String storedPassword = userMap.get(usernameInput);
-        return password.equals(storedPassword);
+        return Ada.validatePassword(password, storedPassword);
     }
 }
