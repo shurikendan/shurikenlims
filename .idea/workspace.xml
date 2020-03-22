@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a010467-b325-48e0-b816-b029401eec53" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dat/map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dat/map.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Register.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/LoginFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/RegisterFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/RegisterFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/UserData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegisterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegisterFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
     </list>
@@ -88,30 +100,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="677" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584701580726" />
-    <state x="1245" y="232" key="#com.intellij.ide.util.MemberChooser" timestamp="1584816815406">
+    <state x="253" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584903570679">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1245" y="232" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1584816815406" />
+    <state x="253" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1584903570679" />
+    <state x="1245" y="232" key="#com.intellij.ide.util.MemberChooser" timestamp="1584902377706">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1245" y="232" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1584902377706" />
     <state x="689" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1584701579032">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="689" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584701579032" />
-    <state width="1877" height="279" key="GridCell.Tab.0.bottom" timestamp="1584899760649">
+    <state width="916" height="279" key="GridCell.Tab.0.bottom" timestamp="1584904403599">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584899760649" />
-    <state width="1877" height="279" key="GridCell.Tab.0.center" timestamp="1584899760649">
+    <state width="916" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584904403599" />
+    <state width="916" height="279" key="GridCell.Tab.0.center" timestamp="1584904403599">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584899760649" />
-    <state width="1877" height="279" key="GridCell.Tab.0.left" timestamp="1584899760649">
+    <state width="916" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584904403599" />
+    <state width="916" height="279" key="GridCell.Tab.0.left" timestamp="1584904403599">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584899760649" />
-    <state width="1877" height="279" key="GridCell.Tab.0.right" timestamp="1584899760649">
+    <state width="916" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584904403599" />
+    <state width="916" height="279" key="GridCell.Tab.0.right" timestamp="1584904403599">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584899760649" />
+    <state width="916" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584904403599" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1584899712142">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -140,9 +156,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1144" y="416" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1584699268199" />
-    <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584899777771">
+    <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584904415747">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584899777771" />
+    <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584904415747" />
   </component>
 </project>
