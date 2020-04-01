@@ -1,3 +1,4 @@
+import javax.print.DocFlavor;
 import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -52,19 +53,19 @@ public class UserData {
             e.printStackTrace();
         }
     }
-
-    public void fileToMap() {
+/* //TODO Get read to and write from file working
+    public void Map<String, String> fileToMap() {
         try {
             File toRead = new File("dat/map.txt");
             FileInputStream fis = new FileInputStream(toRead);
             Scanner sc = new Scanner(fis);
-            HashMap<String, String> mapInFile = new HashMap<String, String>();
+            HashMap<String, String> userMap = new HashMap<String, String>();
 
             //Read from file line by line
             while(sc.hasNextLine()) {
                 String currentLine = sc.nextLine();
                 StringTokenizer st = new StringTokenizer(currentLine, "=", false);
-                mapInFile.put(st.nextToken(), st.nextToken());
+                userMap.put(st.nextToken(), st.nextToken());
             }
             fis.close();
         } catch (FileNotFoundException e) {
@@ -72,18 +73,41 @@ public class UserData {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
+    }
+*/
     //Checks if username and password match
     public boolean isLoginCorrect(String usernameInput, String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
         //Loads the hashmap from map.txt
-        fileToMap();
+        String storedPassword = null;
+        try {
+            File toRead = new File("dat/map.txt");
+            FileInputStream fis = new FileInputStream(toRead);
+            Scanner sc = new Scanner(fis);
+            HashMap<String, String> userMap = new HashMap<String, String>();
+
+            //Read from file line by line
+            while (sc.hasNextLine()) {
+                String currentLine = sc.nextLine();
+                StringTokenizer st = new StringTokenizer(currentLine, "=", false);
+                userMap.put(st.nextToken(), st.nextToken());
+            }
+            storedPassword = userMap.get(usernameInput);
+            fis.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //If the username isn't found in the map...
-        if (!userMap.containsKey(usernameInput)) {
-            return false;
-        }
-        String storedPassword = userMap.get(usernameInput);
+        //if (!userMap.containsKey(usernameInput)) {
+        //    return false;
+        //}
+
+
         return Ada.validatePassword(password, storedPassword);
+
     }
 }

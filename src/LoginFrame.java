@@ -112,5 +112,8 @@ public class LoginFrame extends JFrame implements ActionListener {
                 passField.setEchoChar('*');
             }
         }
+        if (actionEvent.getSource() == optionButton) {
+            Register.main();
+        }
     }
 }

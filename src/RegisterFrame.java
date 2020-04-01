@@ -12,15 +12,21 @@ public class RegisterFrame extends JFrame implements ActionListener {
         addComponentsToContainer();
         addActionEvent();
     }
+    //Ignore the use of any layout manager
     public void setLayoutManager() {
         container.setLayout(null);
     }
+
+    //Sets the location and size of the elements
     public void setLocationAndSize() {
         infoLabel.setBounds(50,50,100,100);
     }
+
+    //Adds all the components to the container
     public void addComponentsToContainer() {
         container.add(infoLabel);
     }
+
     public void addActionEvent() {
 
     }
