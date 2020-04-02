@@ -113,7 +113,12 @@ public class LoginFrame extends JFrame implements ActionListener {
             }
         }
         if (actionEvent.getSource() == optionButton) {
-            Register.main();
+            RegisterFrame frame = new RegisterFrame();
+            frame.setTitle("Shuriken LIMS");
+            frame.setVisible(true);
+            frame.setBounds(10,10,350,300);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setResizable(false);
         }
     }
 }

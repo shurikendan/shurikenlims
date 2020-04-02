@@ -1,4 +1,3 @@
-import javax.print.DocFlavor;
 import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -6,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.lang.String;
 
 
 public class UserData {
@@ -53,8 +53,9 @@ public class UserData {
             e.printStackTrace();
         }
     }
-/* //TODO Get read to and write from file working
-    public void Map<String, String> fileToMap() {
+
+ //TODO Get read to and write from file working
+    /*public void Map<String, String> void fileToMap() {
         try {
             File toRead = new File("dat/map.txt");
             FileInputStream fis = new FileInputStream(toRead);
@@ -76,6 +77,55 @@ public class UserData {
 
     }
 */
+    /*
+    public void fileToMap() throws IOException {
+        String mapFile = "dat/map.txt";
+        HashMap<String, String> userMap = new HashMap<String, String>();
+
+        String line;
+        BufferedReader reader = new BufferedReader(new FileReader(mapFile));
+        while ((line == reader.readLine()) != null) {
+            String[] parts = line.split(":", 2);
+            if (parts.length >= 2) {
+                String key = parts[0];
+                String value = parts[1];
+                userMap.put(key, value);
+            }
+            else {
+                 System.out.println("Ignoring line: " + line);
+            }
+        }
+        for (String key : userMap.keySet()) {
+            System.out.println(key + ":" + userMap.get(key));
+        }
+        reader.close();
+    }
+    */
+    public void fileToMap() throws IOException {
+        {
+            String filePath = "dat/map.txt";
+            //HashMap<String, String> map = new HashMap<String, String>();
+
+            String line;
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(":", 2);
+                if (parts.length >= 2) {
+                    String key = parts[0];
+                    String value = parts[1];
+                    userMap.put(key, value);
+                } else {
+                    System.out.println("ignoring line: " + line);
+                }
+            }
+
+            for (String key : userMap.keySet()) {
+                System.out.println(key + ":" + userMap.get(key));
+            }
+            reader.close();
+        }
+    }
+
     //Checks if username and password match
     public boolean isLoginCorrect(String usernameInput, String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
         //Loads the hashmap from map.txt
