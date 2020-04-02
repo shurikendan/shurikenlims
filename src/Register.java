@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class Register {
-    public static void main() {
+    public static void main(String[] args) {
         RegisterFrame frame = new RegisterFrame();
         frame.setTitle("Shuriken LIMS");
         frame.setVisible(true);
