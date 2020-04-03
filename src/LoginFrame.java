@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -68,7 +70,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 
     //Controls the actions of the login, reset and show password buttons
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
+    public void actionPerformed(@NotNull ActionEvent actionEvent) {
         //Login button actions
         if (actionEvent.getSource() == loginButton) {
             String userText;
@@ -78,7 +80,7 @@ public class LoginFrame extends JFrame implements ActionListener {
             pwdText = passField.getText();
             try {
                 //Checks if the login is correct
-                if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
+                if (UserData.getInstance().isLoginCorrect(userText, pwdText) != false) {
                     //And displays message //TODO Correct password should lead to next screen, not a message
                     JOptionPane.showMessageDialog(this, "Correct Login");
                 }

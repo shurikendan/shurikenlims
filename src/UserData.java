@@ -1,3 +1,9 @@
+/*
+This class contains all the methods that are related to the user's data.
+ */
+
+import org.jetbrains.annotations.NotNull;
+
 import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -9,7 +15,6 @@ import java.lang.String;
 
 
 public class UserData {
-
     private static UserData instance = new UserData();
 
     //Defines userMap as a new HashMap
@@ -20,20 +25,21 @@ public class UserData {
         return instance;
     }
 
-    //Checks if username is taken by referencing UserMap
+    //Checks whether a username is taken
     public boolean isUsernameTaken(String username) {
         return userMap.containsKey(username);
     }
 
-    //Adds a username and password to the UserMap
-    public void registerUser(String username, String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
+    //Registers a new user
+    public void registerUser(String username, String password, String forename, String surname) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         String passwordHash = Ada.main(password);
         userMap.put(username, passwordHash);
         mapToFile((HashMap<String, String>) userMap);
+        aliasToFile(username, forename, surname);
     }
 
-    //Write the hashmap to the file map.txt
-    public void mapToFile(HashMap<String, String> map) {
+    //Write the HashMap to the file map.txt
+    public void mapToFile(@NotNull HashMap<String, String> map) {
         //Write to file "map.txt"
         try {
             File mapFile = new File("dat/map.txt");
@@ -45,62 +51,12 @@ public class UserData {
             pw.flush();
             pw.close();
             fos.close();
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
- //TODO Get read to and write from file working
-    /*public void Map<String, String> void fileToMap() {
-        try {
-            File toRead = new File("dat/map.txt");
-            FileInputStream fis = new FileInputStream(toRead);
-            Scanner sc = new Scanner(fis);
-            HashMap<String, String> userMap = new HashMap<String, String>();
-
-            //Read from file line by line
-            while(sc.hasNextLine()) {
-                String currentLine = sc.nextLine();
-                StringTokenizer st = new StringTokenizer(currentLine, "=", false);
-                userMap.put(st.nextToken(), st.nextToken());
-            }
-            fis.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-*/
-    /*
-    public void fileToMap() throws IOException {
-        String mapFile = "dat/map.txt";
-        HashMap<String, String> userMap = new HashMap<String, String>();
 
-        String line;
-        BufferedReader reader = new BufferedReader(new FileReader(mapFile));
-        while ((line == reader.readLine()) != null) {
-            String[] parts = line.split(":", 2);
-            if (parts.length >= 2) {
-                String key = parts[0];
-                String value = parts[1];
-                userMap.put(key, value);
-            }
-            else {
-                 System.out.println("Ignoring line: " + line);
-            }
-        }
-        for (String key : userMap.keySet()) {
-            System.out.println(key + ":" + userMap.get(key));
-        }
-        reader.close();
-    }
-    */
+    //Writes the contents of the file to the HashMap object
     public void fileToMap() throws IOException {
         {
             String filePath = "dat/map.txt";
@@ -126,6 +82,15 @@ public class UserData {
         }
     }
 
+    public void aliasToFile(String username, String forename, String surname) throws IOException {
+        File aliasFile = new File("dat/alias.txt");
+        FileOutputStream fos = new FileOutputStream(aliasFile);
+        PrintWriter pw = new PrintWriter(fos);
+        pw.println(username + ":" + forename + ":" + surname);
+        pw.flush();
+        pw.close();
+        fos.close();
+    }
     //Checks if username and password match
     public boolean isLoginCorrect(String usernameInput, String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
         //Loads the hashmap from map.txt
@@ -145,19 +110,19 @@ public class UserData {
             storedPassword = userMap.get(usernameInput);
             fis.close();
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         //If the username isn't found in the map...
-        //if (!userMap.containsKey(usernameInput)) {
-        //    return false;
-        //}
 
+        if (storedPassword == null) {
+            return false;
+        }
+        else {
+            return Ada.validatePassword(password, storedPassword);
+        }
 
-        return Ada.validatePassword(password, storedPassword);
 
     }
 }

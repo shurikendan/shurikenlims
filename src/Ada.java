@@ -1,3 +1,8 @@
+/*
+This class handles all the means of security for the program.
+ */
+
+import org.jetbrains.annotations.NotNull;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.math.BigInteger;
@@ -6,15 +11,19 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
 public class Ada {
+
     //Main method returns hashed password
+    @NotNull
     public static String main(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
         String ogPwd = password;
         String hash = genHash(ogPwd);
         return hash;
     }
 
-    //Generates hash, including iterations and salt from raw password
-    private static String genHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    //Generates the hash and collects salt.
+    //Returns a string containing the iterations and the salted hash.
+    @NotNull
+    private static String genHash(@NotNull String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
         int iterations = 1000;
         char[] chars = password.toCharArray();
         byte[] salt = getSalt();
@@ -26,6 +35,7 @@ public class Ada {
     }
 
     //Generates salt
+    @NotNull
     private static byte[] getSalt() throws NoSuchAlgorithmException {
         SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
         byte[] salt = new byte[16];
@@ -34,6 +44,7 @@ public class Ada {
     }
 
     //Converts a String (generated hash) to hex
+    @NotNull
     private static String toHex(byte[] array) throws NoSuchAlgorithmException {
         BigInteger bi = new BigInteger(1, array);
         String hex = bi.toString(16);
@@ -64,7 +75,8 @@ public class Ada {
     }
 
     //Translates hex back into a String
-    private static byte[] fromHex(String hex) throws NoSuchAlgorithmException {
+    @NotNull
+    private static byte[] fromHex(@NotNull String hex) throws NoSuchAlgorithmException {
         byte[] bytes = new byte[hex.length() / 2];
         for (int i = 0; i < bytes.length; i++) {
             bytes[i] = (byte)Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
