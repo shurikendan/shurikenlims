@@ -6,7 +6,9 @@ import java.security.spec.InvalidKeySpecException;
 
 
 public class main {
-    public static void main(String[] args) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
+    public static void main(String[] args) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException, ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
+        //TODO Change LookAndFeel
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         //Loads data from file into HashMap Object
         UserData.getInstance().fileToMap();
         Login.main(null);

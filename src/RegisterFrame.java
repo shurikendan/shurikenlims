@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 public class RegisterFrame extends JFrame implements ActionListener {
     Container regContainer = getContentPane();
     JButton backButton = new JButton("< Back");
-    JLabel regInfoLabel = new JLabel("Register new user");
     JLabel regUserLabel = new JLabel("New Username");
     JLabel regPassLabel = new JLabel("New Password");
     JTextField regUserTextField = new JTextField();
@@ -19,7 +18,6 @@ public class RegisterFrame extends JFrame implements ActionListener {
         setLocationAndSize();
         addComponentsToContainer();
         addActionEvent();
-        setLabelFont();
     }
 
     //Ignore the use of any layout manager
@@ -30,7 +28,6 @@ public class RegisterFrame extends JFrame implements ActionListener {
     //Sets the location and size of the elements
     public void setLocationAndSize() {
         backButton.setBounds(10, 10, 75, 25);
-        regInfoLabel.setBounds(350,0,100,25);
         //Username elements
         regUserLabel.setBounds(50,50,100,30);
         regUserTextField.setBounds(150,50,150,30);
@@ -47,7 +44,6 @@ public class RegisterFrame extends JFrame implements ActionListener {
     //Adds all the components to the container
     public void addComponentsToContainer() {
         regContainer.add(backButton);
-        regContainer.add(regInfoLabel);
         regContainer.add(regUserLabel);
         regContainer.add(regUserTextField);
         regContainer.add(regPassLabel);
@@ -57,16 +53,15 @@ public class RegisterFrame extends JFrame implements ActionListener {
         regContainer.add(regResetButton);
     }
 
-    private void setLabelFont() {
-        regInfoLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-    }
-
 
     public void addActionEvent() {
-
+        backButton.addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-
+        if (actionEvent.getSource() == backButton) {
+            LoginOptions.main(null);
+            super.dispose();
+        }
     }
 }

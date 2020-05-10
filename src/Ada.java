@@ -58,7 +58,7 @@ public class Ada {
     }
 
     //Checks an entered password against the stored password
-    public static boolean validatePassword(String passwordInput, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    public static boolean validatePassword(@NotNull String passwordInput, @NotNull String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException {
         String[] parts = storedPassword.split(":");
         int iterations = Integer.parseInt(parts[0]);
         byte[] salt = fromHex(parts[1]);

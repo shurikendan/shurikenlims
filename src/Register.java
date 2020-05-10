@@ -5,8 +5,9 @@ public class Register {
         RegisterFrame frame = new RegisterFrame();
         frame.setTitle("Register New User");
         frame.setVisible(true);
-        frame.setBounds(10,10,700,300);
+        frame.setBounds(10,10,350,500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+        System.out.println("register");
     }
 }
