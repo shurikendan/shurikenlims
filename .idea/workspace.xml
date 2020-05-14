@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a010467-b325-48e0-b816-b029401eec53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LoginOptions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LoginOptionsFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/LoginFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/Register.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/Register.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/RegisterFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/RegisterFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/Ada.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/Ada.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/META-INF/shurikenlims.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ada.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Register.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RegisterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegisterFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
     </list>
@@ -81,8 +75,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Login" />
       <item itemvalue="Application.Register" />
+      <item itemvalue="Application.Login" />
       <item itemvalue="Application.main" />
     </list>
   </component>
@@ -119,21 +113,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="689" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585844065630" />
-    <state width="1877" height="215" key="GridCell.Tab.0.bottom" timestamp="1587742353688">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="242" key="GridCell.Tab.0.bottom" timestamp="1589477445380">
+      <screen x="0" y="0" width="1536" height="920" />
     </state>
+    <state width="1493" height="242" key="GridCell.Tab.0.bottom/0.0.1536.920@0.0.1536.920" timestamp="1589477445380" />
     <state width="1877" height="215" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587742353688" />
-    <state width="1877" height="215" key="GridCell.Tab.0.center" timestamp="1587742353688">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="242" key="GridCell.Tab.0.center" timestamp="1589477445380">
+      <screen x="0" y="0" width="1536" height="920" />
     </state>
+    <state width="1493" height="242" key="GridCell.Tab.0.center/0.0.1536.920@0.0.1536.920" timestamp="1589477445380" />
     <state width="1877" height="215" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587742353688" />
-    <state width="1877" height="215" key="GridCell.Tab.0.left" timestamp="1587742353687">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="242" key="GridCell.Tab.0.left" timestamp="1589477445380">
+      <screen x="0" y="0" width="1536" height="920" />
     </state>
+    <state width="1493" height="242" key="GridCell.Tab.0.left/0.0.1536.920@0.0.1536.920" timestamp="1589477445380" />
     <state width="1877" height="215" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587742353687" />
-    <state width="1877" height="215" key="GridCell.Tab.0.right" timestamp="1587742353688">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="242" key="GridCell.Tab.0.right" timestamp="1589477445380">
+      <screen x="0" y="0" width="1536" height="920" />
     </state>
+    <state width="1493" height="242" key="GridCell.Tab.0.right/0.0.1536.920@0.0.1536.920" timestamp="1589477445380" />
     <state width="1877" height="215" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587742353688" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1585921054951">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -159,17 +157,19 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="868" y="81" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585913450296" />
-    <state x="661" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1589112649565">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="529" y="303" key="com.intellij.ide.util.TipDialog" timestamp="1589474035146">
+      <screen x="0" y="0" width="1536" height="920" />
     </state>
+    <state x="529" y="303" key="com.intellij.ide.util.TipDialog/0.0.1536.920@0.0.1536.920" timestamp="1589474035146" />
     <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589112649565" />
     <state x="1144" y="416" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584699268199">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1144" y="416" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1584699268199" />
-    <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589112656026">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="999" y="389" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589477458589">
+      <screen x="0" y="0" width="1536" height="920" />
     </state>
+    <state x="999" y="389" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.920@0.0.1536.920" timestamp="1589477458589" />
     <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589112656026" />
   </component>
 </project>

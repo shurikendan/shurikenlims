@@ -10,6 +10,7 @@ public class main {
         //TODO Change LookAndFeel
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         //Loads data from file into HashMap Object
+        Ada.main("beans");
         UserData.getInstance().fileToMap();
         Login.main(null);
         /*

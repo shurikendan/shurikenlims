@@ -88,7 +88,6 @@ public class LoginFrame extends JFrame implements ActionListener {
                     //If it's not correct, show error message.
                     JOptionPane.showMessageDialog(this, "Incorrect Login", "Authentication Error", JOptionPane.ERROR_MESSAGE);
                     //Sets both fields to be blank again
-                    userTextField.setText("");
                     passField.setText("");
                 }
             }
