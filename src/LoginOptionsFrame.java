@@ -8,6 +8,7 @@ public class LoginOptionsFrame extends JFrame implements ActionListener {
     Container buttonContainer = getContentPane();
     JButton backButton = new JButton("< Back");
     JButton registerButton = new JButton("Register user");
+    JButton userOptionsButton = new JButton("User options");
     LoginOptionsFrame() {
         setLayoutManager();
         setLocationAndSize();
@@ -21,15 +22,18 @@ public class LoginOptionsFrame extends JFrame implements ActionListener {
     public void setLocationAndSize() {
         backButton.setBounds(10, 10, 75, 25);
         registerButton.setBounds(75, 50, 200, 30);
+        userOptionsButton.setBounds(75, 100, 200, 30);
 
     }
     public void addComponentsToContainer() {
         buttonContainer.add(backButton);
         buttonContainer.add(registerButton);
+        buttonContainer.add(userOptionsButton);
     }
     public void addActionEvent() {
         backButton.addActionListener(this);
         registerButton.addActionListener(this);
+        userOptionsButton.addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent actionEvent) {

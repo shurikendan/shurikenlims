@@ -80,7 +80,7 @@ public class LoginFrame extends JFrame implements ActionListener {
             pwdText = passField.getText();
             try {
                 //Checks if the login is correct
-                if (UserData.getInstance().isLoginCorrect(userText, pwdText) != false) {
+                if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
                     //And displays message //TODO Correct password should lead to next screen, not a message
                     JOptionPane.showMessageDialog(this, "Correct Login");
                 }
