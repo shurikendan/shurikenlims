@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Objects;
 
 public class RegisterFrame extends JFrame implements ActionListener {
 
@@ -17,21 +18,30 @@ public class RegisterFrame extends JFrame implements ActionListener {
     JLabel regUserLabel = new JLabel("New Username");
     JLabel regPassLabel = new JLabel("New Password");
     JLabel regConfirmPassLabel = new JLabel("Confirm Password");
+
     JTextField regUserTextField = new JTextField();
     JPasswordField regPassField = new JPasswordField();
     JPasswordField regConfirmPassField = new JPasswordField();
+
     JButton regLoginButton = new JButton("Confirm");
     JButton regResetButton = new JButton("Reset");
+
     JCheckBox regShowPassword = new JCheckBox("Show Password");
 
     //Admin elements
     JLabel adminUserLabel = new JLabel("Admin Username");
     JLabel adminPassLabel = new JLabel("Admin Password");
+
     JTextField adminUserTextField = new JTextField();
     JPasswordField adminPassField = new JPasswordField();
+
     JButton adminLoginButton = new JButton("Confirm");
     JButton adminResetButton = new JButton("Reset");
+
     JCheckBox adminShowPassword = new JCheckBox("Show Password");
+
+    //Other elements
+    JButton createUserButton = new JButton("Create New User");
 
     RegisterFrame() {
         setLayoutManager();
@@ -53,6 +63,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
         //Username elements
         regUserLabel.setBounds(50,50,100,30);
         regUserTextField.setBounds(150,50,150,30);
+
         adminUserLabel.setBounds(50, 300, 100, 30);
         adminUserTextField.setBounds(150, 300, 150, 30);
 
@@ -63,6 +74,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
         regConfirmPassLabel.setBounds(50, 150, 100, 30);
         regConfirmPassField.setBounds(150, 150, 150, 30);
         regConfirmPassField.setEchoChar('*');
+
         adminPassLabel.setBounds(50, 350, 100, 30);
         adminPassField.setBounds(150, 350, 150, 30);
         adminPassField.setEchoChar('*');
@@ -71,9 +83,12 @@ public class RegisterFrame extends JFrame implements ActionListener {
         regShowPassword.setBounds(150,180,150,30);
         regLoginButton.setBounds(50,230,100,30);
         regResetButton.setBounds(200,230,100,30);
+
         adminShowPassword.setBounds(150, 380, 150, 30);
         adminLoginButton.setBounds(50, 430, 100, 30);
         adminResetButton.setBounds(200, 430, 100, 30);
+
+        createUserButton.setBounds(50, 480, 250, 30);
     }
 
     //Adds all the components to the container
@@ -100,6 +115,8 @@ public class RegisterFrame extends JFrame implements ActionListener {
         regContainer.add(adminShowPassword);
         regContainer.add(adminLoginButton);
         regContainer.add(adminResetButton);
+
+        regContainer.add(createUserButton);
     }
 
 
@@ -136,11 +153,67 @@ public class RegisterFrame extends JFrame implements ActionListener {
             try {
                 if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
                     JOptionPane.showMessageDialog(this, "Correct Admin Credentials");
+                    adminUserTextField.setEnabled(false);
+                    adminPassField.setEnabled(false);
+                    adminShowPassword.setEnabled(false);
+                    adminLoginButton.setEnabled(false);
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Incorrect Admin Credentials");
                 }
             } catch (InvalidKeySpecException e) {
                 e.printStackTrace();
             } catch (NoSuchAlgorithmException e) {
                 e.printStackTrace();
+            }
+
+        }
+
+        //Events for new user login button
+        if (actionEvent.getSource() == regLoginButton) {
+            String p1 = regPassField.getText();
+            String p2 = regConfirmPassField.getText();
+
+            //Checks that the passwords match
+            if (Objects.equals(p1, p2)) {
+                System.out.println("Match");
+                boolean match = true;
+            }
+            else {
+                System.out.println("Passwords do not match");
+                boolean match = false;
+            }
+
+            //Checks the complexity of the password
+            String p = regPassField.getText();
+            int alpha = 0;
+            int numer = 0;
+            int speci = 0;
+
+            for (int i = 0; i < p.length(); i++) {
+                char c = p.charAt(i);
+
+                if (p.matches("[a-zA-Z]")) alpha = alpha + 1;
+                else {
+                    if (p.matches("[0-9]")) numer = numer + 1;
+                    else {
+                        if (!p.matches("[a-zA-Z0-9]")) speci = speci + 1;
+                    }
+                }
+            }
+            System.out.println(alpha);
+
+            //Checks if username isn't blank
+            String username = regUserTextField.getText();
+            if (username.isEmpty()) JOptionPane.showMessageDialog(this, "Please enter username");
+            else {
+                //Checks that the username is available
+                if (!UserData.getInstance().isUsernameTaken(regUserTextField.getText())) {
+                    JOptionPane.showMessageDialog(this, "Username is already taken");
+                    System.out.println(regUserTextField.getText());
+                    System.out.println(UserData.getInstance().isUsernameTaken(regUserTextField.getText()));
+
+                }
             }
 
         }
@@ -156,9 +229,11 @@ public class RegisterFrame extends JFrame implements ActionListener {
         if (actionEvent.getSource() == adminResetButton) {
             adminUserTextField.setText("");
             adminPassField.setText("");
+            adminUserTextField.setEnabled(true);
+            adminPassField.setEnabled(true);
         }
 
-        //Events for new user
+        //Events for new user show password button
         if (actionEvent.getSource() == regShowPassword) {
             if (regShowPassword.isSelected()) {
                 //Change the characters to be readable
@@ -169,6 +244,18 @@ public class RegisterFrame extends JFrame implements ActionListener {
                 //Change the characters to unreadable
                 regPassField.setEchoChar('*');
                 regConfirmPassField.setEchoChar('*');
+            }
+        }
+
+        //Events for admin show password button
+        if (actionEvent.getSource() == adminShowPassword) {
+            if (adminShowPassword.isSelected()) {
+                //Change the characters to be readable
+                adminPassField.setEchoChar((char) 0);
+            }
+            else {
+                //Change the characters to unreadable
+                adminPassField.setEchoChar('*');
             }
         }
     }
