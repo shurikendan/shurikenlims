@@ -12,9 +12,6 @@ import java.util.Objects;
 
 public class RegisterFrame extends JFrame implements ActionListener {
 
-    //public static boolean meetsReqs = false;
-    //public static boolean adminApproved = false;
-
     //Container
     Container regContainer = getContentPane();
 
@@ -42,19 +39,22 @@ public class RegisterFrame extends JFrame implements ActionListener {
     JTextField adminUserTextField = new JTextField();
     JPasswordField adminPassField = new JPasswordField();
 
-    JButton adminLoginButton = new JButton("Confirm");
+    JButton adminLoginButton = new JButton("Create User");
     JButton adminResetButton = new JButton("Reset");
 
     JCheckBox adminShowPassword = new JCheckBox("Show Password");
-
-    //Other elements
-    JButton createUserButton = new JButton("Create New User");
 
     RegisterFrame() {
         setLayoutManager();
         setLocationAndSize();
         addComponentsToContainer();
         addActionEvent();
+
+        adminLoginButton.setEnabled(false);
+        adminUserTextField.setEnabled(false);
+        adminPassField.setEnabled(false);
+        adminShowPassword.setEnabled(false);
+        adminResetButton.setEnabled(false);
     }
 
     //Ignore the use of any layout manager
@@ -95,8 +95,6 @@ public class RegisterFrame extends JFrame implements ActionListener {
         adminLoginButton.setBounds(50, 430, 100, 30);
         adminResetButton.setBounds(200, 430, 100, 30);
 
-        createUserButton.setBounds(50, 480, 250, 30);
-        createUserButton.setEnabled(true);
     }
 
     //Adds all the components to the container
@@ -124,7 +122,6 @@ public class RegisterFrame extends JFrame implements ActionListener {
         regContainer.add(adminLoginButton);
         regContainer.add(adminResetButton);
 
-        regContainer.add(createUserButton);
     }
 
 
@@ -142,16 +139,12 @@ public class RegisterFrame extends JFrame implements ActionListener {
         adminResetButton.addActionListener(this);
         adminShowPassword.addActionListener(this);
 
-        createUserButton.addActionListener(this);
     }
 
 
     //Action events
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-
-    boolean meetsReqs = false;
-    boolean adminApproved = false;
 
         //Back button
         if (actionEvent.getSource() == backButton) {
@@ -160,7 +153,6 @@ public class RegisterFrame extends JFrame implements ActionListener {
         }
 
         //Admin Login button
-        adminApproved = false;
         if (actionEvent.getSource() == adminLoginButton) {
             String userText;
             char[] pwdText;
@@ -169,12 +161,19 @@ public class RegisterFrame extends JFrame implements ActionListener {
             try {
                 if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
                     JOptionPane.showMessageDialog(this, "Correct Admin Credentials");
-                    adminUserTextField.setEditable(false);
-                    adminPassField.setEditable(false);
+                    adminUserTextField.setEnabled(false);
+                    adminPassField.setEnabled(false);
                     adminShowPassword.setEnabled(false);
                     adminLoginButton.setEnabled(false);
-                    adminApproved = true;
                     System.out.println("admin approved");
+                    try {
+                        UserData.getInstance().registerUser(regUserTextField.getText(), regPassField.getPassword());
+                        System.out.println("user create");
+                        JOptionPane.showMessageDialog(this, "User created successfully");
+                    }
+                    catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     JOptionPane.showMessageDialog(this, "Incorrect Admin Credentials");
                 }
@@ -185,7 +184,6 @@ public class RegisterFrame extends JFrame implements ActionListener {
         }
 
         //Events for new user login button
-        meetsReqs = false;
         if (actionEvent.getSource() == regLoginButton) {
             char[] p1 = regPassField.getPassword();
             char[] p2 = regConfirmPassField.getPassword();
@@ -230,13 +228,19 @@ public class RegisterFrame extends JFrame implements ActionListener {
                                     }
                                 }
                                 if (caps >= capsReq && numer >= numerReq && speci >= speciReq) {
-                                    meetsReqs = true;
                                     System.out.println("meets reqs");
-                                    regUserTextField.setEditable(false);
-                                    regPassField.setEditable(false);
-                                    regConfirmPassField.setEditable(false);
+                                    regUserTextField.setEnabled(false);
+                                    regPassField.setEnabled(false);
+                                    regConfirmPassField.setEnabled(false);
                                     regLoginButton.setEnabled(false);
                                     regShowPassword.setEnabled(false);
+
+                                    adminUserTextField.setEnabled(true);
+                                    adminPassField.setEnabled(true);
+                                    adminLoginButton.setEnabled(true);
+                                    adminShowPassword.setEnabled(true);
+                                    adminResetButton.setEnabled(true);
+
                                 } else {
                                     if (caps < capsReq) {
                                         JOptionPane.showMessageDialog(this, "Insufficient password capitalisation");
@@ -263,36 +267,12 @@ public class RegisterFrame extends JFrame implements ActionListener {
             }
         }
 
-        //Events for create user button
-        if (actionEvent.getSource() == createUserButton) {
-            System.out.println("test");
-            System.out.println(adminApproved);
-            System.out.println(meetsReqs);
-            if (meetsReqs) {
-                System.out.println("action meets reqs");
-            }
-            if (adminApproved) {
-                System.out.println("action admin");
-            }
-            /*
-            try {
-                UserData.getInstance().registerUser(regUserTextField.getText(), regPassField.getPassword());
-                System.out.println("user create");
-                JOptionPane.showMessageDialog(this, "User created successfully");
-            }
-            catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            }
-            System.out.println("debug 1");
-             */
-        }
-
         //Events for admin reset button
         if (actionEvent.getSource() == adminResetButton) {
             adminUserTextField.setText("");
             adminPassField.setText("");
-            adminUserTextField.setEditable(true);
-            adminPassField.setEditable(true);
+            adminUserTextField.setEnabled(true);
+            adminPassField.setEnabled(true);
         }
 
         //Events for new user reset button
@@ -300,9 +280,9 @@ public class RegisterFrame extends JFrame implements ActionListener {
             regUserTextField.setText("");
             regPassField.setText("");
             regConfirmPassField.setText("");
-            regUserTextField.setEditable(true);
-            regPassField.setEditable(true);
-            regConfirmPassField.setEditable(true);
+            regUserTextField.setEnabled(true);
+            regPassField.setEnabled(true);
+            regConfirmPassField.setEnabled(true);
             regLoginButton.setEnabled(true);
             regShowPassword.setEnabled(true);
         }
