@@ -27,15 +27,22 @@ public class UserData {
 
     //Checks whether a username is taken
     public boolean isUsernameTaken(String username) {
-        return userMap.containsKey(username);
+        String key = username + "=1000"; //Bad programming, should change when iterations change
+        return userMap.containsKey(key);
     }
 
     //Registers a new user
-    public void registerUser(String username, String password, String forename, String surname) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
+    public void registerUser(String username, char[] password) throws InvalidKeySpecException,
+            NoSuchAlgorithmException {
         String passwordHash = Ada.main(password);
         userMap.put(username, passwordHash);
         mapToFile((HashMap<String, String>) userMap);
-        aliasToFile(username, forename, surname);
+        //aliasToFile(username, forename, surname);
+    }
+
+    public void removeUser(String username) {
+        userMap.remove(username);
+        mapToFile((HashMap<String, String>) userMap);
     }
 
     //Write the HashMap to the file map.txt
@@ -51,7 +58,8 @@ public class UserData {
             pw.flush();
             pw.close();
             fos.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -92,7 +100,8 @@ public class UserData {
         fos.close();
     }
     //Checks if username and password match
-    public boolean isLoginCorrect(String usernameInput, String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
+    public boolean isLoginCorrect(String usernameInput, char[] password) throws InvalidKeySpecException,
+            NoSuchAlgorithmException {
         //Loads the hashmap from map.txt
         String storedPassword = null;
         try {
