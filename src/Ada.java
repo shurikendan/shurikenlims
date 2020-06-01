@@ -14,8 +14,8 @@ public class Ada {
 
     //Main method returns hashed password
     @NotNull
-    public static String main(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        String ogPwd = password;
+    public static String main(char[] password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        char[] ogPwd = password;
         String hash = genHash(ogPwd);
         return hash;
     }
@@ -23,14 +23,15 @@ public class Ada {
     //Generates the hash and collects salt.
     //Returns a string containing the iterations and the salted hash.
     @NotNull
-    private static String genHash(@NotNull String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    private static String genHash(@NotNull char[] password) throws NoSuchAlgorithmException, InvalidKeySpecException {
         int iterations = 1000;
-        char[] chars = password.toCharArray();
+        char[] chars = password;
         byte[] salt = getSalt();
 
         PBEKeySpec spec = new PBEKeySpec(chars, salt, iterations, 64 * 8);
         SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
         byte[] hash = skf.generateSecret(spec).getEncoded();
+        System.out.println(iterations + ":" + toHex(salt) + ":" + toHex(hash));
         return iterations + ":" + toHex(salt) + ":" + toHex(hash);
     }
 
@@ -58,12 +59,12 @@ public class Ada {
     }
 
     //Checks an entered password against the stored password
-    public static boolean validatePassword(@NotNull String passwordInput, @NotNull String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    public static boolean validatePassword(@NotNull char[] passwordInput, @NotNull String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException {
         String[] parts = storedPassword.split(":");
         int iterations = Integer.parseInt(parts[0]);
         byte[] salt = fromHex(parts[1]);
         byte[] hash = fromHex(parts[2]);
-        PBEKeySpec spec = new PBEKeySpec(passwordInput.toCharArray(), salt, iterations, hash.length * 8);
+        PBEKeySpec spec = new PBEKeySpec(passwordInput, salt, iterations, hash.length * 8);
         SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
         byte[] testHash = skf.generateSecret(spec).getEncoded();
 

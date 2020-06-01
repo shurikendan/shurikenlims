@@ -1,12 +1,19 @@
+import javafx.util.converter.CharacterStringConverter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class RegisterFrame extends JFrame implements ActionListener {
+
+    //public static boolean meetsReqs = false;
+    //public static boolean adminApproved = false;
 
     //Container
     Container regContainer = getContentPane();
@@ -89,6 +96,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
         adminResetButton.setBounds(200, 430, 100, 30);
 
         createUserButton.setBounds(50, 480, 250, 30);
+        createUserButton.setEnabled(true);
     }
 
     //Adds all the components to the container
@@ -133,89 +141,158 @@ public class RegisterFrame extends JFrame implements ActionListener {
         adminLoginButton.addActionListener(this);
         adminResetButton.addActionListener(this);
         adminShowPassword.addActionListener(this);
+
+        createUserButton.addActionListener(this);
     }
 
+
+    //Action events
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
-        //Events for back button
+    boolean meetsReqs = false;
+    boolean adminApproved = false;
+
+        //Back button
         if (actionEvent.getSource() == backButton) {
             LoginOptions.main(null);
             super.dispose();
         }
 
-        //Events for admin login button
+        //Admin Login button
+        adminApproved = false;
         if (actionEvent.getSource() == adminLoginButton) {
             String userText;
-            String pwdText;
+            char[] pwdText;
             userText = adminUserTextField.getText();
-            pwdText = adminPassField.getText(); //Yes, I know this is deprecated but i don't care
+            pwdText = adminPassField.getPassword();
             try {
                 if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
                     JOptionPane.showMessageDialog(this, "Correct Admin Credentials");
-                    adminUserTextField.setEnabled(false);
-                    adminPassField.setEnabled(false);
+                    adminUserTextField.setEditable(false);
+                    adminPassField.setEditable(false);
                     adminShowPassword.setEnabled(false);
                     adminLoginButton.setEnabled(false);
-                }
-                else {
+                    adminApproved = true;
+                    System.out.println("admin approved");
+                } else {
                     JOptionPane.showMessageDialog(this, "Incorrect Admin Credentials");
                 }
-            } catch (InvalidKeySpecException e) {
-                e.printStackTrace();
-            } catch (NoSuchAlgorithmException e) {
+            } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
                 e.printStackTrace();
             }
 
         }
 
         //Events for new user login button
+        meetsReqs = false;
         if (actionEvent.getSource() == regLoginButton) {
-            String p1 = regPassField.getText();
-            String p2 = regConfirmPassField.getText();
-
-            //Checks that the passwords match
-            if (Objects.equals(p1, p2)) {
-                System.out.println("Match");
-                boolean match = true;
-            }
-            else {
-                System.out.println("Passwords do not match");
-                boolean match = false;
-            }
-
-            //Checks the complexity of the password
-            String p = regPassField.getText();
-            int alpha = 0;
-            int numer = 0;
-            int speci = 0;
-
-            for (int i = 0; i < p.length(); i++) {
-                char c = p.charAt(i);
-
-                if (p.matches("[a-zA-Z]")) alpha = alpha + 1;
-                else {
-                    if (p.matches("[0-9]")) numer = numer + 1;
-                    else {
-                        if (!p.matches("[a-zA-Z0-9]")) speci = speci + 1;
-                    }
-                }
-            }
-            System.out.println(alpha);
+            char[] p1 = regPassField.getPassword();
+            char[] p2 = regConfirmPassField.getPassword();
 
             //Checks if username isn't blank
             String username = regUserTextField.getText();
             if (username.isEmpty()) JOptionPane.showMessageDialog(this, "Please enter username");
             else {
                 //Checks that the username is available
-                if (!UserData.getInstance().isUsernameTaken(regUserTextField.getText())) {
+                if (UserData.getInstance().isUsernameTaken(regUserTextField.getText())) {
                     JOptionPane.showMessageDialog(this, "Username is already taken");
-                    System.out.println(regUserTextField.getText());
-                    System.out.println(UserData.getInstance().isUsernameTaken(regUserTextField.getText()));
+                } else {
+                    if (!regPassField.getPassword().equals("")) {
 
+                        //Checks that the passwords match
+                        if (Arrays.equals(p1, p2)) {
+
+                            //Checks the complexity of the password
+                            char[] p = regPassField.getPassword();
+                            int caps = 0;
+                            int numer = 0;
+                            int speci = 0;
+
+                            int capsReq = 1;
+                            int numerReq = 1;
+                            int speciReq = 1;
+
+                            if (p.length > 7) {
+                                for (int i = 0; i < p.length; i++) {
+                                    char c = p[i];                  //Separates the string into chars
+                                    String cs = String.valueOf(c);
+
+                                    //Counts alphabetical characters
+                                    if (cs.matches("[a-zA-Z]")) caps = caps + 1;
+                                    else {
+                                        //Counts numerical characters
+                                        if (cs.matches("[0-9]")) numer = numer + 1;
+                                        else {
+                                            //Counts special characters
+                                            if (!cs.matches("[a-zA-Z0-9]")) speci = speci + 1;
+                                        }
+                                    }
+                                }
+                                if (caps >= capsReq && numer >= numerReq && speci >= speciReq) {
+                                    meetsReqs = true;
+                                    System.out.println("meets reqs");
+                                    regUserTextField.setEditable(false);
+                                    regPassField.setEditable(false);
+                                    regConfirmPassField.setEditable(false);
+                                    regLoginButton.setEnabled(false);
+                                    regShowPassword.setEnabled(false);
+                                } else {
+                                    if (caps < capsReq) {
+                                        JOptionPane.showMessageDialog(this, "Insufficient password capitalisation");
+                                    }
+                                    if (numer < numerReq) {
+                                        JOptionPane.showMessageDialog(this, "Insufficient password numerals");
+                                    }
+                                    if (speci < speciReq) {
+                                        JOptionPane.showMessageDialog(this, "Insufficient password speciality");
+                                    }
+                                }
+
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Password too short");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Passwords do not match");
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Password is blank");
+                    }
                 }
             }
+        }
 
+        //Events for create user button
+        if (actionEvent.getSource() == createUserButton) {
+            System.out.println("test");
+            System.out.println(adminApproved);
+            System.out.println(meetsReqs);
+            if (meetsReqs) {
+                System.out.println("action meets reqs");
+            }
+            if (adminApproved) {
+                System.out.println("action admin");
+            }
+            /*
+            try {
+                UserData.getInstance().registerUser(regUserTextField.getText(), regPassField.getPassword());
+                System.out.println("user create");
+                JOptionPane.showMessageDialog(this, "User created successfully");
+            }
+            catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+            System.out.println("debug 1");
+             */
+        }
+
+        //Events for admin reset button
+        if (actionEvent.getSource() == adminResetButton) {
+            adminUserTextField.setText("");
+            adminPassField.setText("");
+            adminUserTextField.setEditable(true);
+            adminPassField.setEditable(true);
         }
 
         //Events for new user reset button
@@ -223,14 +300,11 @@ public class RegisterFrame extends JFrame implements ActionListener {
             regUserTextField.setText("");
             regPassField.setText("");
             regConfirmPassField.setText("");
-        }
-
-        //Events for admin reset button
-        if (actionEvent.getSource() == adminResetButton) {
-            adminUserTextField.setText("");
-            adminPassField.setText("");
-            adminUserTextField.setEnabled(true);
-            adminPassField.setEnabled(true);
+            regUserTextField.setEditable(true);
+            regPassField.setEditable(true);
+            regConfirmPassField.setEditable(true);
+            regLoginButton.setEnabled(true);
+            regShowPassword.setEnabled(true);
         }
 
         //Events for new user show password button
@@ -239,8 +313,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
                 //Change the characters to be readable
                 regPassField.setEchoChar((char) 0);
                 regConfirmPassField.setEchoChar((char) 0);
-            }
-            else {
+            } else {
                 //Change the characters to unreadable
                 regPassField.setEchoChar('*');
                 regConfirmPassField.setEchoChar('*');
@@ -252,8 +325,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
             if (adminShowPassword.isSelected()) {
                 //Change the characters to be readable
                 adminPassField.setEchoChar((char) 0);
-            }
-            else {
+            } else {
                 //Change the characters to unreadable
                 adminPassField.setEchoChar('*');
             }

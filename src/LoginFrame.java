@@ -74,10 +74,10 @@ public class LoginFrame extends JFrame implements ActionListener {
         //Login button actions
         if (actionEvent.getSource() == loginButton) {
             String userText;
-            String pwdText;
+            char[] pwdText;
             //Get whatever's inside the username and password fields
             userText = userTextField.getText();
-            pwdText = passField.getText();
+            pwdText = passField.getPassword();
             try {
                 //Checks if the login is correct
                 if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
