@@ -83,6 +83,7 @@ public class LoginFrame extends JFrame implements ActionListener {
                 if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
                     //And displays message //TODO Correct password should lead to next screen, not a message
                     JOptionPane.showMessageDialog(this, "Correct Login");
+                    LandingTR.main(null);
                 }
                 else {
                     //If it's not correct, show error message.

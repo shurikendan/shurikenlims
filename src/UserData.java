@@ -40,6 +40,11 @@ public class UserData {
         //aliasToFile(username, forename, surname);
     }
 
+    public void removeUser(String username) {
+        userMap.remove(username);
+        mapToFile((HashMap<String, String>) userMap);
+    }
+
     //Write the HashMap to the file map.txt
     public void mapToFile(@NotNull HashMap<String, String> map) {
         //Write to file "map.txt"
@@ -53,7 +58,8 @@ public class UserData {
             pw.flush();
             pw.close();
             fos.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
