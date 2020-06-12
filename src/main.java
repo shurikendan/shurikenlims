@@ -11,7 +11,9 @@ public class main {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         //Loads data from file into HashMap Object
         UserData.getInstance().fileToMap();
+        UserData.getInstance().privToMap();
         Login.main(null);
+        System.out.println(UserData.getInstance().getPriv("test1"));
         /*
         LoginFrame loginFrame = new LoginFrame();
         loginFrame.setTitle("Shuriken LIMS");

@@ -5,6 +5,7 @@ This class contains all the methods that are related to the user's data.
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
+import java.nio.Buffer;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.HashMap;
@@ -19,6 +20,7 @@ public class UserData {
 
     //Defines userMap as a new HashMap
     private Map<String, String> userMap = new HashMap<>();
+    private Map<String, String> privMap = new HashMap<>();
 
     //This keeps UserData a singleton
     public static UserData getInstance() {
@@ -90,6 +92,8 @@ public class UserData {
         }
     }
 
+
+    //Not used
     public void aliasToFile(String username, String forename, String surname) throws IOException {
         File aliasFile = new File("dat/alias.txt");
         FileOutputStream fos = new FileOutputStream(aliasFile);
@@ -99,6 +103,97 @@ public class UserData {
         pw.close();
         fos.close();
     }
+
+
+    //Adds the user's priv to the file
+    public void privToFile(HashMap<String, String> map) {
+        try {
+            File mapFile = new File("dat/prov.txt");
+            FileOutputStream fos = new FileOutputStream(mapFile);
+            PrintWriter pw = new PrintWriter(fos);
+            for (Map.Entry<String, String> m : map.entrySet()) {
+                pw.println(m.getKey() + "=" + m.getValue());
+            }
+            pw.flush();
+            pw.close();
+            fos.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void privToMap() throws IOException {
+        {
+            String filePath = "dat/priv.txt";
+            String line;
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(":", 2);
+                if (parts.length >= 2) {
+                    String key = parts[0];
+                    String value = parts[1];
+                    privMap.put(key, value);
+                } else {
+                    System.out.println("ignoring line: " + line);
+                }
+            }
+
+            for (String key : privMap.keySet()) {
+                System.out.println(key + ":" + privMap.get(key));
+            }
+            reader.close();
+        }
+    }
+
+
+
+
+    //Finds and returns the privelige level of a user when called.
+    public String getPriv(String username) throws IOException {
+
+        String priv = null;
+        /*
+        String filePath = "dat/priv.txt";
+        String line;
+        String userPart = null;
+        String privPart = null;
+        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        while ((line = reader.readLine()) != null) {
+            String[] parts = line.split(":", 2);
+            if (parts.length >= 2) {
+                userPart = parts[0];
+                privPart = parts[1];
+            }
+            else {
+                System.out.println("ignoring line: " + line);
+            }
+            if (userPart.equals(username)); {
+                priv = privPart;
+            }
+        }
+        reader.close();
+        return priv;
+        */
+        try {
+            File toRead = new File("dat/priv.txt");
+            FileInputStream fis = new FileInputStream(toRead);
+            Scanner sc = new Scanner(fis);
+            HashMap<String, String> privMap = new HashMap<>();
+            while (sc.hasNextLine()) {
+                String currentLine = sc.nextLine();
+                StringTokenizer st = new StringTokenizer(currentLine, ":", false);
+                privMap.put(st.nextToken(), st.nextToken());
+            }
+            priv = privMap.get(username);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return priv;
+    }
+
+
     //Checks if username and password match
     public boolean isLoginCorrect(String usernameInput, char[] password) throws InvalidKeySpecException,
             NoSuchAlgorithmException {
