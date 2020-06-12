@@ -13,7 +13,11 @@ public class main {
         UserData.getInstance().fileToMap();
         UserData.getInstance().privToMap();
         Login.main(null);
-        System.out.println(UserData.getInstance().getPriv("test1"));
+        //System.out.println(UserData.getInstance().getPriv("test1"));
+        //char[] ps;
+        //String str = "password123!";
+        //ps = str.toCharArray();
+        //UserData.getInstance().registerUser("admin", ps, "0");
         /*
         LoginFrame loginFrame = new LoginFrame();
         loginFrame.setTitle("Shuriken LIMS");

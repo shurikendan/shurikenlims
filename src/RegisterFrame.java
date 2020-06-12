@@ -170,6 +170,8 @@ public class RegisterFrame extends JFrame implements ActionListener {
             char[] pwdText;
             userText = adminUserTextField.getText();
             pwdText = adminPassField.getPassword();
+            String priv;
+            priv = String.valueOf(priveligesComboBox.getSelectedIndex());
             try {
                 if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
                     JOptionPane.showMessageDialog(this, "Correct Admin Credentials");
@@ -179,9 +181,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
                     adminLoginButton.setEnabled(false);
                     System.out.println("admin approved");
                     try {
-                        UserData.getInstance().registerUser(regUserTextField.getText(), regPassField.getPassword());
-                        //UserData.getInstance().privToFile(regUserTextField.getText(),
-                                //(String) priveligesComboBox.getSelectedItem());
+                        UserData.getInstance().registerUser(userText, pwdText, priv);
                         System.out.println("user create");
                         JOptionPane.showMessageDialog(this, "User created successfully");
                     }

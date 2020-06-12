@@ -1,5 +1,5 @@
 /*
-This class contains all the methods that are related to the user's data.
+This class handles everything to do with user data.
  */
 
 import org.jetbrains.annotations.NotNull;
@@ -16,30 +16,33 @@ import java.lang.String;
 
 
 public class UserData {
+    //This is a lazy bugfix
     private static UserData instance = new UserData();
 
-    //Defines userMap as a new HashMap
+    //Defines the two hashmaps
     private Map<String, String> userMap = new HashMap<>();
     private Map<String, String> privMap = new HashMap<>();
 
-    //This keeps UserData a singleton
+    //Essentially a lazy bugfix
     public static UserData getInstance() {
         return instance;
     }
 
-    //Checks whether a username is taken
+    //Checks whether username exists
     public boolean isUsernameTaken(String username) {
         String key = username + "=1000"; //Bad programming, should change when iterations change
         return userMap.containsKey(key);
     }
 
     //Registers a new user
-    public void registerUser(String username, char[] password) throws InvalidKeySpecException,
+    public void registerUser(String username, char[] password, String priv) throws InvalidKeySpecException,
             NoSuchAlgorithmException {
+        //Creates password hash through security class
         String passwordHash = Ada.main(password);
         userMap.put(username, passwordHash);
         mapToFile((HashMap<String, String>) userMap);
-        //aliasToFile(username, forename, surname);
+        privMap.put(username, priv);
+        privToFile((HashMap<String, String>) privMap);
     }
 
     public void removeUser(String username) {
@@ -55,7 +58,7 @@ public class UserData {
             FileOutputStream fos = new FileOutputStream(mapFile);
             PrintWriter pw = new PrintWriter(fos);
             for (Map.Entry<String, String> m : map.entrySet()) {
-                pw.println(m.getKey() + "=" + m.getValue());
+                pw.println(m.getKey() + ":" + m.getValue());
             }
             pw.flush();
             pw.close();
@@ -86,7 +89,7 @@ public class UserData {
             }
 
             for (String key : userMap.keySet()) {
-                System.out.println(key + ":" + userMap.get(key));
+                System.out.println("[DEBUG] " + key + ":" + userMap.get(key));
             }
             reader.close();
         }
@@ -108,11 +111,11 @@ public class UserData {
     //Adds the user's priv to the file
     public void privToFile(HashMap<String, String> map) {
         try {
-            File mapFile = new File("dat/prov.txt");
+            File mapFile = new File("dat/priv.txt");
             FileOutputStream fos = new FileOutputStream(mapFile);
             PrintWriter pw = new PrintWriter(fos);
             for (Map.Entry<String, String> m : map.entrySet()) {
-                pw.println(m.getKey() + "=" + m.getValue());
+                pw.println(m.getKey() + ":" + m.getValue());
             }
             pw.flush();
             pw.close();
@@ -138,43 +141,17 @@ public class UserData {
                     System.out.println("ignoring line: " + line);
                 }
             }
-
+            //This is for debug purposes
             for (String key : privMap.keySet()) {
-                System.out.println(key + ":" + privMap.get(key));
+                System.out.println("[DEBUG] " + key + ":" + privMap.get(key));
             }
             reader.close();
         }
     }
 
-
-
-
     //Finds and returns the privelige level of a user when called.
     public String getPriv(String username) throws IOException {
-
         String priv = null;
-        /*
-        String filePath = "dat/priv.txt";
-        String line;
-        String userPart = null;
-        String privPart = null;
-        BufferedReader reader = new BufferedReader(new FileReader(filePath));
-        while ((line = reader.readLine()) != null) {
-            String[] parts = line.split(":", 2);
-            if (parts.length >= 2) {
-                userPart = parts[0];
-                privPart = parts[1];
-            }
-            else {
-                System.out.println("ignoring line: " + line);
-            }
-            if (userPart.equals(username)); {
-                priv = privPart;
-            }
-        }
-        reader.close();
-        return priv;
-        */
         try {
             File toRead = new File("dat/priv.txt");
             FileInputStream fis = new FileInputStream(toRead);
