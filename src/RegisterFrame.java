@@ -1,14 +1,11 @@
-import javafx.util.converter.CharacterStringConverter;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
-import java.util.Objects;
+
 
 public class RegisterFrame extends JFrame implements ActionListener {
 
@@ -166,14 +163,18 @@ public class RegisterFrame extends JFrame implements ActionListener {
 
         //Admin Login button
         if (actionEvent.getSource() == adminLoginButton) {
-            String userText;
-            char[] pwdText;
-            userText = adminUserTextField.getText();
-            pwdText = adminPassField.getPassword();
+            String adminUserText;
+            char[] adminPwdText;
+            String regUserText;
+            char[] regPwdText;
+            adminUserText = adminUserTextField.getText();
+            adminPwdText = adminPassField.getPassword();
+            regUserText = regUserTextField.getText();
+            regPwdText = regPassField.getPassword();
             String priv;
             priv = String.valueOf(priveligesComboBox.getSelectedIndex());
             try {
-                if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
+                if (UserData.getInstance().isLoginCorrect(adminUserText, adminPwdText)) {
                     JOptionPane.showMessageDialog(this, "Correct Admin Credentials");
                     adminUserTextField.setEnabled(false);
                     adminPassField.setEnabled(false);
@@ -181,7 +182,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
                     adminLoginButton.setEnabled(false);
                     System.out.println("admin approved");
                     try {
-                        UserData.getInstance().registerUser(userText, pwdText, priv);
+                        UserData.getInstance().registerUser(regUserText, regPwdText, priv);
                         System.out.println("user create");
                         JOptionPane.showMessageDialog(this, "User created successfully");
                     }

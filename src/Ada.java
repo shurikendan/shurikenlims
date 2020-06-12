@@ -1,7 +1,3 @@
-/*
-This class handles all the means of security for the program.
- */
-
 import org.jetbrains.annotations.NotNull;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -10,29 +6,65 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
+/**
+ * Handles program security including password verification and hashing.
+ */
 public class Ada {
-
-    //Main method returns hashed password
+    /**
+     * @param passwordInput Password to be hashed.
+     * @return Hashed password.
+     */
     @NotNull
-    public static String main(char[] password) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        char[] ogPwd = password;
-        String hash = genHash(ogPwd);
+    public static String main(char[] passwordInput) {
+        String hash = "";
+        hash = genHash(passwordInput);
         return hash;
     }
 
-    //Generates the hash and collects salt.
-    //Returns a string containing the iterations and the salted hash.
+    /**
+     * @param password Password to be hashed
+     * @return Concatenated string containing iterations,salt and hash speperated by ":".
+     */
     @NotNull
-    private static String genHash(@NotNull char[] password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    private static String genHash(@NotNull char[] password) {
         int iterations = 1000;
-        char[] chars = password;
-        byte[] salt = getSalt();
-
-        PBEKeySpec spec = new PBEKeySpec(chars, salt, iterations, 64 * 8);
-        SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-        byte[] hash = skf.generateSecret(spec).getEncoded();
-        System.out.println(iterations + ":" + toHex(salt) + ":" + toHex(hash));
-        return iterations + ":" + toHex(salt) + ":" + toHex(hash);
+        byte[] salt = new byte[0];
+        String toBeStored = "";
+        try {
+            salt = getSalt();
+        }
+        catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        PBEKeySpec spec = new PBEKeySpec(password, salt, iterations, 64 * 8);
+        SecretKeyFactory skf = null;
+        try {
+            skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        }
+        catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        byte[] hash = new byte[0];
+        try {
+            assert skf != null;
+            hash = skf.generateSecret(spec).getEncoded();
+        }
+        catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
+        try {
+            System.out.println(iterations + ":" + toHex(salt) + ":" + toHex(hash));
+        }
+        catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        try {
+            toBeStored = iterations + ":" + toHex(salt) + ":" + toHex(hash);
+        }
+        catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return toBeStored;
     }
 
     //Generates salt

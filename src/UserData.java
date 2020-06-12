@@ -8,10 +8,7 @@ import java.io.*;
 import java.nio.Buffer;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.StringTokenizer;
+import java.util.*;
 import java.lang.String;
 
 
@@ -58,7 +55,7 @@ public class UserData {
             FileOutputStream fos = new FileOutputStream(mapFile);
             PrintWriter pw = new PrintWriter(fos);
             for (Map.Entry<String, String> m : map.entrySet()) {
-                pw.println(m.getKey() + ":" + m.getValue());
+                pw.println(m.getKey() + "=" + m.getValue());
             }
             pw.flush();
             pw.close();
@@ -84,7 +81,7 @@ public class UserData {
                     String value = parts[1];
                     userMap.put(key, value);
                 } else {
-                    System.out.println("ignoring line: " + line);
+                    System.out.println("[UserData - fileToMap] Ignoring line: " + line);
                 }
             }
 
@@ -138,7 +135,7 @@ public class UserData {
                     String value = parts[1];
                     privMap.put(key, value);
                 } else {
-                    System.out.println("ignoring line: " + line);
+                    System.out.println("[UserData - privToMap] Ignoring line: " + line);
                 }
             }
             //This is for debug purposes
