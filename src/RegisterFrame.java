@@ -27,6 +27,9 @@ public class RegisterFrame extends JFrame implements ActionListener {
     JPasswordField regPassField = new JPasswordField();
     JPasswordField regConfirmPassField = new JPasswordField();
 
+    String[] priveligeOptions = {"Teacher", "Technician", "Admin"};
+    JComboBox priveligesComboBox = new JComboBox(priveligeOptions);
+
     JButton regLoginButton = new JButton("Confirm");
     JButton regResetButton = new JButton("Reset");
 
@@ -43,6 +46,8 @@ public class RegisterFrame extends JFrame implements ActionListener {
     JButton adminResetButton = new JButton("Reset");
 
     JCheckBox adminShowPassword = new JCheckBox("Show Password");
+
+    JSeparator sep = new JSeparator();
 
     RegisterFrame() {
         setLayoutManager();
@@ -71,8 +76,8 @@ public class RegisterFrame extends JFrame implements ActionListener {
         regUserLabel.setBounds(50,50,100,30);
         regUserTextField.setBounds(150,50,150,30);
 
-        adminUserLabel.setBounds(50, 300, 100, 30);
-        adminUserTextField.setBounds(150, 300, 150, 30);
+        adminUserLabel.setBounds(50, 350, 100, 30);
+        adminUserTextField.setBounds(150, 350, 150, 30);
 
         //Password elements
         regPassLabel.setBounds(50,100,100,30);
@@ -82,18 +87,22 @@ public class RegisterFrame extends JFrame implements ActionListener {
         regConfirmPassField.setBounds(150, 150, 150, 30);
         regConfirmPassField.setEchoChar('*');
 
-        adminPassLabel.setBounds(50, 350, 100, 30);
-        adminPassField.setBounds(150, 350, 150, 30);
+        adminPassLabel.setBounds(50, 400, 100, 30);
+        adminPassField.setBounds(150, 400, 150, 30);
         adminPassField.setEchoChar('*');
 
         //Other elements
         regShowPassword.setBounds(150,180,150,30);
-        regLoginButton.setBounds(50,230,100,30);
-        regResetButton.setBounds(200,230,100,30);
+        regLoginButton.setBounds(50,265,100,30);
+        regResetButton.setBounds(200,265,100,30);
 
-        adminShowPassword.setBounds(150, 380, 150, 30);
-        adminLoginButton.setBounds(50, 430, 100, 30);
-        adminResetButton.setBounds(200, 430, 100, 30);
+        priveligesComboBox.setBounds(50,215,250,30);
+
+        adminShowPassword.setBounds(150, 430, 150, 30);
+        adminLoginButton.setBounds(50, 480, 100, 30);
+        adminResetButton.setBounds(200, 480, 100, 30);
+
+        sep.setBounds(0,320,350,10);
 
     }
 
@@ -112,6 +121,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
         regContainer.add(regShowPassword);
         regContainer.add(regLoginButton);
         regContainer.add(regResetButton);
+        regContainer.add(priveligesComboBox);
 
         //Admin's details elements
         regContainer.add(adminUserLabel);
@@ -121,6 +131,8 @@ public class RegisterFrame extends JFrame implements ActionListener {
         regContainer.add(adminShowPassword);
         regContainer.add(adminLoginButton);
         regContainer.add(adminResetButton);
+
+        regContainer.add(sep);
 
     }
 
@@ -168,6 +180,8 @@ public class RegisterFrame extends JFrame implements ActionListener {
                     System.out.println("admin approved");
                     try {
                         UserData.getInstance().registerUser(regUserTextField.getText(), regPassField.getPassword());
+                        //UserData.getInstance().privToFile(regUserTextField.getText(),
+                                //(String) priveligesComboBox.getSelectedItem());
                         System.out.println("user create");
                         JOptionPane.showMessageDialog(this, "User created successfully");
                     }

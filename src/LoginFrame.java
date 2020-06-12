@@ -3,6 +3,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
@@ -81,9 +82,19 @@ public class LoginFrame extends JFrame implements ActionListener {
             try {
                 //Checks if the login is correct
                 if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
-                    //And displays message //TODO Correct password should lead to next screen, not a message
-                    JOptionPane.showMessageDialog(this, "Correct Login");
-                    LandingTR.main(null);
+                    if (UserData.getInstance().getPriv(userText).equals("2")) {
+                        LandingTR.main(null);
+                    }
+                    else {
+                        if (UserData.getInstance().getPriv(userText).equals("1")) {
+                            System.out.println("Technician Page");
+                        }
+                        else {
+                            if (UserData.getInstance().getPriv(userText).equals("0")) {
+                                System.out.println("Admin Page");
+                            }
+                        }
+                    }
                 }
                 else {
                     //If it's not correct, show error message.
@@ -92,10 +103,7 @@ public class LoginFrame extends JFrame implements ActionListener {
                     passField.setText("");
                 }
             }
-            catch (InvalidKeySpecException e) {
-                e.printStackTrace();
-            }
-            catch (NoSuchAlgorithmException e) {
+            catch (InvalidKeySpecException | NoSuchAlgorithmException | IOException e) {
                 e.printStackTrace();
             }
         }
