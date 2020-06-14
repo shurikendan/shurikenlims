@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
-//Creates custom frame class
+/**
+ * Class creates login interface
+ */
 public class LoginFrame extends JFrame implements ActionListener {
     //Container to hold elements
     Container container = getContentPane();
@@ -28,12 +30,16 @@ public class LoginFrame extends JFrame implements ActionListener {
         addActionEvent();
     }
 
-    //Setting bounds manually, so don't need a layout manager
+    /**
+     * Sets the layout manager - in this case overriding it to null
+     */
     public void setLayoutManager() {
         container.setLayout(null);
     }
 
-    //Setting the bounds for all the elements
+    /**
+     * Sets location and size of all elements
+     */
     public void setLocationAndSize() {
         //Username elements
         userLabel.setBounds(50,50,100,30);
@@ -49,7 +55,9 @@ public class LoginFrame extends JFrame implements ActionListener {
         optionButton.setBounds(200, 220, 100, 20);
     }
 
-    //Adds all the components to the container
+    /**
+     * Adds components to container
+     */
     public void addComponentsToContainer() {
         container.add(userLabel);
         container.add(passLabel);
@@ -61,7 +69,9 @@ public class LoginFrame extends JFrame implements ActionListener {
         container.add(optionButton);
     }
 
-    //Adds event listeners to the necessary elements
+    /**
+     * Adds event listeners to necessary elements
+     */
     public void addActionEvent() {
         loginButton.addActionListener(this);
         resetButton.addActionListener(this);
@@ -69,7 +79,10 @@ public class LoginFrame extends JFrame implements ActionListener {
         optionButton.addActionListener(this);
     }
 
-    //Controls the actions of the login, reset and show password buttons
+    /**
+     * Defines what happens when an action is performed
+     * @param actionEvent actionevent object from Swing
+     */
     @Override
     public void actionPerformed(@NotNull ActionEvent actionEvent) {
         //Login button actions

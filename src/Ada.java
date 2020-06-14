@@ -40,7 +40,7 @@ public class Ada {
             skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
         }
         catch (NoSuchAlgorithmException e) {
-            System.out.println("[EXCEPTION] NoSuchAlgorithm exception at Ada:39");
+            System.out.println("[EXCEPTION] NoSuchAlgorithm exception in Ada.genHash()");
             e.printStackTrace();
         }
         byte[] hash = new byte[0];
@@ -49,7 +49,7 @@ public class Ada {
             hash = skf.generateSecret(spec).getEncoded();
         }
         catch (InvalidKeySpecException e) {
-            System.out.println("[EXCEPTION] InvalidKeySpec exception at Ada:48");
+            System.out.println("[EXCEPTION] InvalidKeySpec exception in Ada.genHash()");
             e.printStackTrace();
         }
         //Concatenates the three components to be stored
@@ -73,6 +73,7 @@ public class Ada {
             sr = SecureRandom.getInstance("SHA1PRNG");
         }
         catch (NoSuchAlgorithmException e) {
+            System.out.println("[EXCEPTION] NoSuchAlgorithmException in Ada.getSalt()");
             e.printStackTrace();
         }
         byte[] salt = new byte[16];
@@ -118,7 +119,7 @@ public class Ada {
             skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
         }
         catch (NoSuchAlgorithmException e) {
-            System.out.println("[EXCEPTION] NoSuchAlgorithm exception at Ada:112");
+            System.out.println("[EXCEPTION] NoSuchAlgorithm exception in Ada.validatePassword()");
             e.printStackTrace();
         }
         byte[] testHash = new byte[0];
@@ -127,7 +128,7 @@ public class Ada {
             testHash = skf.generateSecret(spec).getEncoded();
         }
         catch (InvalidKeySpecException e) {
-            System.out.println("[EXCEPTION] InvalidKeySpecException at Ada:121");
+            System.out.println("[EXCEPTION] InvalidKeySpecException in Ada.validatePassword()");
             e.printStackTrace();
         }
 
