@@ -171,8 +171,22 @@ public class RegisterFrame extends JFrame implements ActionListener {
             adminPwdText = adminPassField.getPassword();
             regUserText = regUserTextField.getText();
             regPwdText = regPassField.getPassword();
-            String priv;
-            priv = String.valueOf(priveligesComboBox.getSelectedIndex());
+            int privIndex;
+            String priv = "";
+            privIndex = priveligesComboBox.getSelectedIndex();
+            if (privIndex == 0) {
+                priv = "2"; //Teacher
+            }
+            else {
+                if (privIndex == 1) {
+                    priv = "1"; //Technician
+                }
+                else {
+                    if (privIndex == 2) {
+                        priv = "0"; //Admin
+                    }
+                }
+            }
             try {
                 if (UserData.getInstance().isLoginCorrect(adminUserText, adminPwdText)) {
                     JOptionPane.showMessageDialog(this, "Correct Admin Credentials");
@@ -180,10 +194,10 @@ public class RegisterFrame extends JFrame implements ActionListener {
                     adminPassField.setEnabled(false);
                     adminShowPassword.setEnabled(false);
                     adminLoginButton.setEnabled(false);
-                    System.out.println("admin approved");
+                    System.out.println("[DEBUG] [REGISTER] Admin Approved");
                     try {
                         UserData.getInstance().registerUser(regUserText, regPwdText, priv);
-                        System.out.println("user create");
+                        System.out.println("[DEBUG] [REGISTER] User Created");
                         JOptionPane.showMessageDialog(this, "User created successfully");
                     }
                     catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
@@ -243,7 +257,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
                                     }
                                 }
                                 if (caps >= capsReq && numer >= numerReq && speci >= speciReq) {
-                                    System.out.println("meets reqs");
+                                    System.out.println("[DEBUG] [REGISTER] Password Meets Complexity Requirements");
                                     regUserTextField.setEnabled(false);
                                     regPassField.setEnabled(false);
                                     regConfirmPassField.setEnabled(false);

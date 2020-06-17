@@ -139,7 +139,7 @@ public class LoginFrame extends JFrame implements ActionListener {
             }
         }
         if (actionEvent.getSource() == optionButton) {
-            System.out.println("options");
+            System.out.println("[DEBUG] Options");
             LoginOptions.main(null);
             super.dispose();
 

@@ -53,8 +53,8 @@ public class Ada {
             e.printStackTrace();
         }
         //Concatenates the three components to be stored
-        System.out.println(iterations + ":" + toHex(salt) + ":" + toHex(hash));
-        toBeStored = iterations + ":" + toHex(salt) + ":" + toHex(hash);
+        System.out.println(toHex(salt) + ":" + toHex(hash));
+        toBeStored = toHex(salt) + ":" + toHex(hash);
         return toBeStored;
     }
 
@@ -110,9 +110,9 @@ public class Ada {
         //Splits the encrypted password back into it's original parts
         String[] parts = storedPassword.split(":");
         //Assigns these parts to variables
-        int iterations = Integer.parseInt(parts[0]);
-        byte[] salt = fromHex(parts[1]);
-        byte[] hash = fromHex(parts[2]);
+        int iterations = 1000;
+        byte[] salt = fromHex(parts[0]);
+        byte[] hash = fromHex(parts[1]);
         PBEKeySpec spec = new PBEKeySpec(passwordInput, salt, iterations, hash.length * 8);
         SecretKeyFactory skf = null;
         try {

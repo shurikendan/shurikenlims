@@ -27,8 +27,7 @@ public class UserData {
 
     //Checks whether username exists
     public boolean isUsernameTaken(String username) {
-        String key = username + "=1000"; //Bad programming, should change when iterations change
-        return userMap.containsKey(key);
+        return userMap.containsKey(username);
     }
 
     //Registers a new user
@@ -50,19 +49,25 @@ public class UserData {
     //Write the HashMap to the file map.txt
     public void mapToFile(@NotNull HashMap<String, String> map) {
         //Write to file "map.txt"
+        String key = "";
         try {
             File mapFile = new File("dat/map.txt");
             FileOutputStream fos = new FileOutputStream(mapFile);
             PrintWriter pw = new PrintWriter(fos);
             for (Map.Entry<String, String> m : map.entrySet()) {
-                pw.println(m.getKey() + "=" + m.getValue());
+                if (m.getKey().contains("=")) {
+                    String[] keyParts = m.getKey().split("=");
+                    key = keyParts[0];
+                }
+                pw.println(key + "=" + m.getValue());
+                System.out.println(m.getKey());
             }
             pw.flush();
             pw.close();
             fos.close();
         }
         catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();     //TODO fix why the colons are getting replaced with =s
         }
     }
 
@@ -86,7 +91,7 @@ public class UserData {
             }
 
             for (String key : userMap.keySet()) {
-                System.out.println("[DEBUG] " + key + ":" + userMap.get(key));
+                System.out.println("[DEBUG] [MAP] " + key + ":" + userMap.get(key));
             }
             reader.close();
         }
@@ -140,7 +145,7 @@ public class UserData {
             }
             //This is for debug purposes
             for (String key : privMap.keySet()) {
-                System.out.println("[DEBUG] " + key + ":" + privMap.get(key));
+                System.out.println("[DEBUG] [PRIV] " + key + ":" + privMap.get(key));
             }
             reader.close();
         }
