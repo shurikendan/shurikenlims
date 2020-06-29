@@ -6,6 +6,9 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
 
+/**
+ * Defines apopoearanece and behaviour of elements in register interface.
+ */
 
 public class RegisterFrame extends JFrame implements ActionListener {
 
@@ -46,6 +49,9 @@ public class RegisterFrame extends JFrame implements ActionListener {
 
     JSeparator sep = new JSeparator();
 
+    /**
+     * Constructor
+     */
     RegisterFrame() {
         setLayoutManager();
         setLocationAndSize();
@@ -59,12 +65,17 @@ public class RegisterFrame extends JFrame implements ActionListener {
         adminResetButton.setEnabled(false);
     }
 
-    //Ignore the use of any layout manager
+    /**
+     * Defines the layout manager used by Swing
+     */
     public void setLayoutManager() {
+        //Ignores layour manager
         regContainer.setLayout(null);
     }
 
-    //Sets the location and size of the elements
+    /**
+     * Defines locations and sizes of interface elements
+     */
     public void setLocationAndSize() {
 
         backButton.setBounds(10, 10, 75, 25);
@@ -103,7 +114,9 @@ public class RegisterFrame extends JFrame implements ActionListener {
 
     }
 
-    //Adds all the components to the container
+    /**
+     * Adds compinents to container
+     */
     public void addComponentsToContainer() {
 
         regContainer.add(backButton);
@@ -195,18 +208,15 @@ public class RegisterFrame extends JFrame implements ActionListener {
                     adminShowPassword.setEnabled(false);
                     adminLoginButton.setEnabled(false);
                     System.out.println("[DEBUG] [REGISTER] Admin Approved");
-                    try {
-                        UserData.getInstance().registerUser(regUserText, regPwdText, priv);
-                        System.out.println("[DEBUG] [REGISTER] User Created");
-                        JOptionPane.showMessageDialog(this, "User created successfully");
-                    }
-                    catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
-                        e.printStackTrace();
-                    }
-                } else {
+                    UserData.getInstance().registerUser(regUserText, regPwdText, priv);
+                    System.out.println("[DEBUG] [REGISTER] User Created");
+                    JOptionPane.showMessageDialog(this, "User created successfully");
+                }
+                else {
                     JOptionPane.showMessageDialog(this, "Incorrect Admin Credentials");
                 }
-            } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
+            }
+            catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
                 e.printStackTrace();
             }
 

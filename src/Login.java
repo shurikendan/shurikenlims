@@ -4,6 +4,12 @@ import java.net.URL;
 
 public class Login {
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }
+        catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
         LoginFrame frame = new LoginFrame();
         frame.setTitle("Shuriken LIMS Login");
         frame.setVisible(true);

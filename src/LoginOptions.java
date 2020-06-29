@@ -3,6 +3,12 @@ import javax.swing.*;
 
 public class LoginOptions {
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }
+        catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
         LoginOptionsFrame loginOptionsFrame = new LoginOptionsFrame();
         loginOptionsFrame.setTitle("Shuriken LIMS Login");
         loginOptionsFrame.setVisible(true);

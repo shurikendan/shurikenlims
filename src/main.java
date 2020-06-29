@@ -13,9 +13,14 @@ import java.security.spec.InvalidKeySpecException;
 
 
 public class main {
-    public static void main(String[] args) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException, ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args) {
         //TODO Change LookAndFeel
-        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }
+        catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
         //Loads data from file into HashMap Object
         UserData.getInstance().fileToMap();
         UserData.getInstance().privToMap();

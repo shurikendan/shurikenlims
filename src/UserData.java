@@ -11,44 +11,71 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.*;
 import java.lang.String;
 
+/**
+ * Handles everything to do with the user's data
+ */
 
 public class UserData {
-    //This is a lazy bugfix
+    /**
+     * Makes sure class is always a singleton
+     */
     private static UserData instance = new UserData();
 
     //Defines the two hashmaps
     private Map<String, String> userMap = new HashMap<>();
     private Map<String, String> privMap = new HashMap<>();
 
-    //Essentially a lazy bugfix
+    /**
+     * Makes sure class is always singleton
+     * @return instance
+     */
     public static UserData getInstance() {
         return instance;
     }
 
-    //Checks whether username exists
+    /**
+     * Checks whether username exists within the HashMap
+     * @param username username to be searched for
+     * @return true if username taken
+     */
     public boolean isUsernameTaken(String username) {
         return userMap.containsKey(username);
     }
 
-    //Registers a new user
-    public void registerUser(String username, char[] password, String priv) throws InvalidKeySpecException,
-            NoSuchAlgorithmException {
-        //Creates password hash through security class
+    /**
+     * Registers a new user into the HashMap
+     * @param username username
+     * @param password password
+     * @param priv privilege level
+     */
+    public void registerUser(String username, char[] password, String priv) {
+        //Creates hash
         String passwordHash = Ada.main(password);
+
+        //Puts username and password into hashmap and then stores to file
         userMap.put(username, passwordHash);
         mapToFile((HashMap<String, String>) userMap);
+
+        //Puts username and priv into hashmap then stores in file
         privMap.put(username, priv);
         privToFile((HashMap<String, String>) privMap);
     }
 
+    /**
+     * Removes user from files
+     * @param username username to be removed
+     */
     public void removeUser(String username) {
         userMap.remove(username);
         mapToFile((HashMap<String, String>) userMap);
+        //TODO put priv here
     }
 
-    //Write the HashMap to the file map.txt
+    /**
+     * Writes the hashmap to the txt file
+     * @param map map to be read from
+     */
     public void mapToFile(@NotNull HashMap<String, String> map) {
-        //Write to file "map.txt"
         String key = "";
         try {
             File mapFile = new File("dat/map.txt");
@@ -72,30 +99,37 @@ public class UserData {
     }
 
     //Writes the contents of the file to the HashMap object
-    public void fileToMap() throws IOException {
+    public void fileToMap() {
         {
             String filePath = "dat/map.txt";
             //HashMap<String, String> map = new HashMap<String, String>();
 
             String line;
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(":", 2);
-                if (parts.length >= 2) {
-                    String key = parts[0];
-                    String value = parts[1];
-                    userMap.put(key, value);
-                } else {
-                    System.out.println("[UserData - fileToMap] Ignoring line: " + line);
+            try {
+                BufferedReader reader = new BufferedReader(new FileReader(filePath));
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split(":", 2);
+                    if (parts.length >= 2) {
+                        String key = parts[0];
+                        String value = parts[1];
+                        userMap.put(key, value);
+                    } else {
+                        System.out.println("[UserData - fileToMap] Ignoring line: " + line);
+                    }
                 }
+                reader.close();
             }
-
+            catch (IOException e) {
+                e.printStackTrace();
+            }
             for (String key : userMap.keySet()) {
                 System.out.println("[DEBUG] [MAP] " + key + ":" + userMap.get(key));
             }
-            reader.close();
+
         }
     }
+
+
 
 
     //Not used
@@ -128,26 +162,32 @@ public class UserData {
         }
     }
 
-    public void privToMap() throws IOException {
+    public void privToMap() {
         {
             String filePath = "dat/priv.txt";
             String line;
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(":", 2);
-                if (parts.length >= 2) {
-                    String key = parts[0];
-                    String value = parts[1];
-                    privMap.put(key, value);
-                } else {
-                    System.out.println("[UserData - privToMap] Ignoring line: " + line);
+            try {
+                BufferedReader reader = new BufferedReader(new FileReader(filePath));
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split(":", 2);
+                    if (parts.length >= 2) {
+                        String key = parts[0];
+                        String value = parts[1];
+                        privMap.put(key, value);
+                    } else {
+                        System.out.println("[UserData - privToMap] Ignoring line: " + line);
+                    }
                 }
+                reader.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
             }
             //This is for debug purposes
             for (String key : privMap.keySet()) {
                 System.out.println("[DEBUG] [PRIV] " + key + ":" + privMap.get(key));
             }
-            reader.close();
+
         }
     }
 

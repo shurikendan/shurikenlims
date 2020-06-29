@@ -1,8 +1,16 @@
 import javax.swing.*;
 import java.net.URL;
 
+
 public class LandingTR {
     public static void main(String args[]) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }
+        catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            System.out.println("Someone's done fucked up");
+            e.printStackTrace();
+        }
         LandingTRFrame frame = new LandingTRFrame();
         frame.setTitle("Shuriken LIMS");
         frame.setVisible(true);

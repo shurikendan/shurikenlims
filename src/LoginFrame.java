@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 /**
- * Class creates login interface
+ * Defines appearance and behaviour of elements in login interface
  */
 public class LoginFrame extends JFrame implements ActionListener {
     //Container to hold elements
