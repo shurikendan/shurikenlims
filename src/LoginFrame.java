@@ -10,7 +10,7 @@ import java.security.spec.InvalidKeySpecException;
 /**
  * Defines appearance and behaviour of elements in login interface
  */
-public class LoginFrame extends JFrame implements ActionListener {
+public class LoginFrame extends JFrame implements ActionListener, KeyListener {
     //Container to hold elements
     Container container = getContentPane();
     //Creating instances of elements
@@ -144,5 +144,53 @@ public class LoginFrame extends JFrame implements ActionListener {
             super.dispose();
 
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent keyEvent) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent keyEvent) {
+        int key = keyEvent.getKeyCode();
+        if(key == KeyEvent.VK_ENTER) {
+            String userText;
+            char[] pwdText;
+            //Get whatever's inside the username and password fields
+            userText = userTextField.getText();
+            pwdText = passField.getPassword();
+            try {
+                //Checks if the login is correct
+                if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
+                    if (UserData.getInstance().getPriv(userText).equals("2")) {
+                        LandingTR.main(null);
+                    }
+                    else {
+                        if (UserData.getInstance().getPriv(userText).equals("1")) {
+                            System.out.println("Technician Page");
+                        }
+                        else {
+                            if (UserData.getInstance().getPriv(userText).equals("0")) {
+                                System.out.println("Admin Page");
+                            }
+                        }
+                    }
+                }
+                else {
+                    //If it's not correct, show error message.
+                    JOptionPane.showMessageDialog(this, "Incorrect Login", "Authentication Error", JOptionPane.ERROR_MESSAGE);
+                    //Sets both fields to be blank again
+                    passField.setText("");
+                }
+            }
+            catch (InvalidKeySpecException | NoSuchAlgorithmException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent keyEvent) {
+
     }
 }
