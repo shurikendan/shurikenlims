@@ -47,5 +47,3 @@ public class LoginOptionsFrame extends JFrame implements ActionListener {
         }
     }
 }
-
-System.out.println("Test");
