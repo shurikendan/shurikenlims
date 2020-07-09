@@ -79,6 +79,60 @@ public class LoginFrame extends JFrame implements ActionListener, KeyListener {
         optionButton.addActionListener(this);
     }
 
+    public void login() {
+        String userText;
+        char[] pwdText;
+        //Get whatever's inside the username and password fields
+        userText = userTextField.getText();
+        pwdText = passField.getPassword();
+        try {
+            //Checks if the login is correct
+            if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
+                if (UserData.getInstance().getPriv(userText).equals("2")) {
+                    LandingTR.main(null);
+                }
+                else {
+                    if (UserData.getInstance().getPriv(userText).equals("1")) {
+                        System.out.println("Technician Page");
+                    }
+                    else {
+                        if (UserData.getInstance().getPriv(userText).equals("0")) {
+                            System.out.println("Admin Page");
+                        }
+                    }
+                }
+            }
+            else {
+                //If it's not correct, show error message.
+                JOptionPane.showMessageDialog(this, "Incorrect Login", "Authentication Error", JOptionPane.ERROR_MESSAGE);
+                //Sets both fields to be blank again
+                passField.setText("");
+            }
+        }
+        catch (InvalidKeySpecException | NoSuchAlgorithmException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void resetTextField(JTextField field) {
+        field.setText("");
+    }
+
+    public void resetPassField(JPasswordField field) {
+        field.setText("");
+    }
+
+    public void showPassword(JPasswordField field, JCheckBox box) {
+        if (box.isSelected()) {
+            //Change the characters to be readable
+            field.setEchoChar((char) 0);
+        }
+        else {
+            //Change the characters to unreadable
+            field.setEchoChar('*');
+        }
+    }
+
     /**
      * Defines what happens when an action is performed
      * @param actionEvent actionevent object from Swing
@@ -87,56 +141,17 @@ public class LoginFrame extends JFrame implements ActionListener, KeyListener {
     public void actionPerformed(@NotNull ActionEvent actionEvent) {
         //Login button actions
         if (actionEvent.getSource() == loginButton) {
-            String userText;
-            char[] pwdText;
-            //Get whatever's inside the username and password fields
-            userText = userTextField.getText();
-            pwdText = passField.getPassword();
-            try {
-                //Checks if the login is correct
-                if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
-                    if (UserData.getInstance().getPriv(userText).equals("2")) {
-                        LandingTR.main(null);
-                    }
-                    else {
-                        if (UserData.getInstance().getPriv(userText).equals("1")) {
-                            System.out.println("Technician Page");
-                        }
-                        else {
-                            if (UserData.getInstance().getPriv(userText).equals("0")) {
-                                System.out.println("Admin Page");
-                            }
-                        }
-                    }
-                }
-                else {
-                    //If it's not correct, show error message.
-                    JOptionPane.showMessageDialog(this, "Incorrect Login", "Authentication Error", JOptionPane.ERROR_MESSAGE);
-                    //Sets both fields to be blank again
-                    passField.setText("");
-                }
-            }
-            catch (InvalidKeySpecException | NoSuchAlgorithmException | IOException e) {
-                e.printStackTrace();
-            }
+            login();
         }
         //Reset button actions
         if (actionEvent.getSource() == resetButton) {
             //Set the text inside the fields to be blank
-            userTextField.setText("");
-            passField.setText("");
+            resetTextField(userTextField);
+            resetPassField(passField);
         }
         //Show password button actions
         if (actionEvent.getSource() == showPassword) {
-            //If the button is selected...
-            if (showPassword.isSelected()) {
-                //Change the characters to be readable
-                passField.setEchoChar((char) 0);
-            }
-            else {
-                //Change the characters to unreadable
-                passField.setEchoChar('*');
-            }
+            showPassword(passField, showPassword);
         }
         if (actionEvent.getSource() == optionButton) {
             System.out.println("[DEBUG] Options");
@@ -148,49 +163,19 @@ public class LoginFrame extends JFrame implements ActionListener, KeyListener {
 
     @Override
     public void keyTyped(KeyEvent keyEvent) {
+
     }
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
         int key = keyEvent.getKeyCode();
         if(key == KeyEvent.VK_ENTER) {
-            String userText;
-            char[] pwdText;
-            //Get whatever's inside the username and password fields
-            userText = userTextField.getText();
-            pwdText = passField.getPassword();
-            try {
-                //Checks if the login is correct
-                if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
-                    if (UserData.getInstance().getPriv(userText).equals("2")) {
-                        LandingTR.main(null);
-                    }
-                    else {
-                        if (UserData.getInstance().getPriv(userText).equals("1")) {
-                            System.out.println("Technician Page");
-                        }
-                        else {
-                            if (UserData.getInstance().getPriv(userText).equals("0")) {
-                                System.out.println("Admin Page");
-                            }
-                        }
-                    }
-                }
-                else {
-                    //If it's not correct, show error message.
-                    JOptionPane.showMessageDialog(this, "Incorrect Login", "Authentication Error", JOptionPane.ERROR_MESSAGE);
-                    //Sets both fields to be blank again
-                    passField.setText("");
-                }
-            }
-            catch (InvalidKeySpecException | NoSuchAlgorithmException | IOException e) {
-                e.printStackTrace();
-            }
+            System.out.println("Enter pressed");
+            login(); //TODO Make enter keypress start login
         }
     }
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
-
     }
 }
