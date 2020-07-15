@@ -10,7 +10,7 @@ import java.security.spec.InvalidKeySpecException;
 /**
  * Defines appearance and behaviour of elements in login interface
  */
-public class LoginFrame extends JFrame implements ActionListener, KeyListener {
+public class LoginFrame extends JFrame implements ActionListener {
     //Container to hold elements
     Container container = getContentPane();
     //Creating instances of elements
@@ -28,6 +28,9 @@ public class LoginFrame extends JFrame implements ActionListener, KeyListener {
         setLocationAndSize();
         addComponentsToContainer();
         addActionEvent();
+        //addKeyListener(this);
+        KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+        manager.addKeyEventDispatcher(new Dispatcher());
     }
 
     /**
@@ -159,23 +162,5 @@ public class LoginFrame extends JFrame implements ActionListener, KeyListener {
             super.dispose();
 
         }
-    }
-
-    @Override
-    public void keyTyped(KeyEvent keyEvent) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent keyEvent) {
-        int key = keyEvent.getKeyCode();
-        if(key == KeyEvent.VK_ENTER) {
-            System.out.println("Enter pressed");
-            login(); //TODO Make enter keypress start login
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent keyEvent) {
     }
 }

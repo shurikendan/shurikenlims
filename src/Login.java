@@ -16,6 +16,7 @@ public class Login {
         frame.setBounds(10,10,350,300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+        frame.setFocusable(true);
         URL iconURL = Login.class.getResource("ico.png");
         ImageIcon icon = new ImageIcon(iconURL);
         frame.setIconImage(icon.getImage());
