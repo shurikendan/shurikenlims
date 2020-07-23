@@ -29,8 +29,6 @@ public class LoginFrame extends JFrame implements ActionListener {
         addComponentsToContainer();
         addActionEvent();
         //addKeyListener(this);
-        KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-        manager.addKeyEventDispatcher(new Dispatcher());
     }
 
     /**
@@ -162,5 +160,6 @@ public class LoginFrame extends JFrame implements ActionListener {
             super.dispose();
 
         }
+        //Dispatcher.isEnterPressed();
     }
 }

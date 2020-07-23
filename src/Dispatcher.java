@@ -1,22 +1,37 @@
+
+/*
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class Dispatcher implements KeyEventDispatcher {
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent keyEvent) {
-        if (keyEvent.getID() == KeyEvent.KEY_PRESSED) {
-            System.out.println("tester");
+public class Dispatcher {
+    private static volatile boolean enterPressed = false;
+    public static boolean isEnterPressed() { //TODO call this at some point
+        synchronized (Dispatcher.class) {
+            return enterPressed;
         }
-        else {
-            if (keyEvent.getID() == KeyEvent.KEY_RELEASED) {
-                System.out.println("2test2");
-            }
-            else {
-                if (keyEvent.getID() == KeyEvent.KEY_TYPED) {
-                    System.out.println("3test3");
+    }
+    public static void main(String[] args) {
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyEvent -> {
+            synchronized (Dispatcher.class) {
+                switch (keyEvent.getID()) {
+                    case KeyEvent.KEY_PRESSED:
+                        if (keyEvent.getKeyCode() == KeyEvent.VK_ENTER) {
+                            enterPressed = true;
+                            System.out.println("Enter Pressed");
+                        }
+                        break;
+
+                    case KeyEvent.KEY_RELEASED:
+                        if (keyEvent.getKeyCode() == KeyEvent.VK_ENTER) {
+                            enterPressed = false;
+                            System.out.println("Enter Released");
+                        }
+                        break;
                 }
             }
-        }
-        return false;
+            return false;
+        });
     }
 }
+
+ */
