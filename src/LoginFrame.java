@@ -91,10 +91,13 @@ public class LoginFrame extends JFrame implements ActionListener {
             if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
                 if (UserData.getInstance().getPriv(userText).equals("2")) {
                     LandingTR.main(null);
+                    super.dispose();
                 }
                 else {
                     if (UserData.getInstance().getPriv(userText).equals("1")) {
                         System.out.println("Technician Page");
+                        LandingTN.main(null);
+                        super.dispose();
                     }
                     else {
                         if (UserData.getInstance().getPriv(userText).equals("0")) {

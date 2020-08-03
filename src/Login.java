@@ -1,5 +1,8 @@
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
 public class Login {
@@ -17,8 +20,14 @@ public class Login {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setFocusable(true);
-        URL iconURL = Login.class.getResource("ico.png");
-        ImageIcon icon = new ImageIcon(iconURL);
-        frame.setIconImage(icon.getImage());
+        //URL iconURL = Login.class.getResource("../res/beaker_white.png");
+        //ImageIcon icon = new ImageIcon(iconURL);
+        //frame.setIconImage(icon.getImage());
+        try {
+            frame.setIconImage(ImageIO.read(new File("res/beaker_white.png")));
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
