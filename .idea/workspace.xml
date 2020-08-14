@@ -6,85 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a010467-b325-48e0-b816-b029401eec53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SQLiteStudio.lnk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/beaker_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/InstallationLog.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/Qt5Core.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/Qt5Gui.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/Qt5Network.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/Qt5PrintSupport.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/Qt5Script.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/Qt5Svg.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/Qt5Widgets.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/Qt5Xml.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/SQLiteStudio.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/UpdateSQLiteStudio.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/UpdateSQLiteStudio.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/UpdateSQLiteStudio.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/app_icon/sqlitestudio.icns" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/app_icon/sqlitestudio.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/app_icon/sqlitestudio.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/app_icon/sqlitestudio.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/components.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/coreSQLiteStudio.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/guiSQLiteStudio.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/iconengines/qsvgicon.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/imageformats/qgif.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/imageformats/qicns.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/imageformats/qico.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/imageformats/qjpeg.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/imageformats/qsvg.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/imageformats/qtga.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/imageformats/qtiff.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/imageformats/qwbmp.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/libeay32.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/libgcc_s_dw2-1.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/libstdc++-6.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/libwinpthread-1.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/network.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/platforms/qwindows.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/ConfigMigration.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/CsvExport.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/CsvImport.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/DbAndroid.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/DbSqlite2.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/DbSqliteCipher.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/DbSqliteSystemData.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/DbSqliteWx.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/HtmlExport.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/JsonExport.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/MultiEditorImage.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/PdfExport.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/Printing.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/RegExpImport.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/ScriptingTcl.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/SqlEnterpriseFormatter.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/SqlExport.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/SqlFormatterSimple.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/plugins/XmlExport.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/printsupport/windowsprintersupport.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/qt.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/sqlite.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/sqlite3.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/sqlitestudiocli.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/styles/qwindowsvistastyle.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/tcl86.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/zlib1.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LandingTN.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LandingTNFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/LandingTR.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/LandingTR.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/LandingTRFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/LandingTRFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/LoginFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/ico.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqlite/SQLiteStudio/InstallationLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/InstallationLog.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sqlite/db/lims.db" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite/db/lims.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LandingTR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LandingTR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LandingTRFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LandingTRFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ico.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/beaker_black.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LandingTNFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LandingTNFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +61,7 @@
       <recent name="C:\Users\Daniel\IdeaProjects\shurikenlims\res" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LandingTN">
+  <component name="RunManager" selected="Application.Base">
     <configuration name="Base" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Base" />
       <module name="shurikenlims" />
@@ -166,9 +92,9 @@
     </configuration>
     <list>
       <item itemvalue="Application.Base" />
-      <item itemvalue="Application.main" />
       <item itemvalue="Application.LandingTN" />
       <item itemvalue="Application.LandingTR" />
+      <item itemvalue="Application.main" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -280,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595498095250</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="More Interface">
+      <created>1596451327693</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1596451327693</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -311,7 +244,8 @@
     <MESSAGE value="small tidy" />
     <MESSAGE value="Added Dispatcher" />
     <MESSAGE value="SQL Implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="SQL Implemented" />
+    <MESSAGE value="More Interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="More Interface" />
   </component>
   <component name="WindowStateProjectService">
     <state x="905" y="137" key="#Inspections" timestamp="1592036254788">
@@ -355,36 +289,44 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="252" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1592052551981" />
-    <state x="416" y="58" width="1105" height="901" key="CommitChangelistDialog2" timestamp="1595498094447">
+    <state x="416" y="58" width="1105" height="901" key="CommitChangelistDialog2" timestamp="1596451326130">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
-    <state x="416" y="58" key="CommitChangelistDialog2/0.0.1536.920@0.0.1536.920" timestamp="1595498094447" />
+    <state x="416" y="58" key="CommitChangelistDialog2/0.0.1536.920@0.0.1536.920" timestamp="1596451326130" />
     <state x="520" y="66" width="1105" height="901" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1594327910253" />
     <state x="592" y="242" key="FileChooserDialogImpl" timestamp="1595496022782">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
     <state x="592" y="242" key="FileChooserDialogImpl/0.0.1536.920@0.0.1536.920" timestamp="1595496022782" />
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592051911219" />
-    <state width="1493" height="184" key="GridCell.Tab.0.bottom" timestamp="1596451283818">
+    <state width="1493" height="214" key="GridCell.Tab.0.bottom" timestamp="1597436927053">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
-    <state width="1493" height="184" key="GridCell.Tab.0.bottom/0.0.1536.920@0.0.1536.920" timestamp="1596451283818" />
-    <state width="1877" height="215" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594390773592" />
-    <state width="1493" height="184" key="GridCell.Tab.0.center" timestamp="1596451283818">
+    <state width="1493" height="214" key="GridCell.Tab.0.bottom/0.0.1536.920/1066.-1080.1920.1040@0.0.1536.920" timestamp="1597436927053" />
+    <state width="1877" height="214" key="GridCell.Tab.0.bottom/0.0.1536.920/1066.-1080.1920.1040@1066.-1080.1920.1040" timestamp="1597433283642" />
+    <state width="1493" height="214" key="GridCell.Tab.0.bottom/0.0.1536.920@0.0.1536.920" timestamp="1597433770174" />
+    <state width="1877" height="214" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597433142830" />
+    <state width="1493" height="214" key="GridCell.Tab.0.center" timestamp="1597436927053">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
-    <state width="1493" height="184" key="GridCell.Tab.0.center/0.0.1536.920@0.0.1536.920" timestamp="1596451283818" />
-    <state width="1877" height="215" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594390773592" />
-    <state width="1493" height="184" key="GridCell.Tab.0.left" timestamp="1596451283817">
+    <state width="1493" height="214" key="GridCell.Tab.0.center/0.0.1536.920/1066.-1080.1920.1040@0.0.1536.920" timestamp="1597436927053" />
+    <state width="1877" height="214" key="GridCell.Tab.0.center/0.0.1536.920/1066.-1080.1920.1040@1066.-1080.1920.1040" timestamp="1597433283642" />
+    <state width="1493" height="214" key="GridCell.Tab.0.center/0.0.1536.920@0.0.1536.920" timestamp="1597433770174" />
+    <state width="1877" height="214" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597433142830" />
+    <state width="1493" height="214" key="GridCell.Tab.0.left" timestamp="1597436927053">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
-    <state width="1493" height="184" key="GridCell.Tab.0.left/0.0.1536.920@0.0.1536.920" timestamp="1596451283817" />
-    <state width="1877" height="215" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594390773592" />
-    <state width="1493" height="184" key="GridCell.Tab.0.right" timestamp="1596451283818">
+    <state width="1493" height="214" key="GridCell.Tab.0.left/0.0.1536.920/1066.-1080.1920.1040@0.0.1536.920" timestamp="1597436927053" />
+    <state width="1877" height="214" key="GridCell.Tab.0.left/0.0.1536.920/1066.-1080.1920.1040@1066.-1080.1920.1040" timestamp="1597433283641" />
+    <state width="1493" height="214" key="GridCell.Tab.0.left/0.0.1536.920@0.0.1536.920" timestamp="1597433770174" />
+    <state width="1877" height="214" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597433142830" />
+    <state width="1493" height="214" key="GridCell.Tab.0.right" timestamp="1597436927053">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
-    <state width="1493" height="184" key="GridCell.Tab.0.right/0.0.1536.920@0.0.1536.920" timestamp="1596451283818" />
-    <state width="1877" height="215" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594390773592" />
+    <state width="1493" height="214" key="GridCell.Tab.0.right/0.0.1536.920/1066.-1080.1920.1040@0.0.1536.920" timestamp="1597436927053" />
+    <state width="1877" height="214" key="GridCell.Tab.0.right/0.0.1536.920/1066.-1080.1920.1040@1066.-1080.1920.1040" timestamp="1597433283642" />
+    <state width="1493" height="214" key="GridCell.Tab.0.right/0.0.1536.920@0.0.1536.920" timestamp="1597433770174" />
+    <state width="1877" height="214" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597433142830" />
     <state width="1493" height="300" key="GridCell.Tab.1.bottom" timestamp="1594973625971">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
@@ -410,17 +352,17 @@
     </state>
     <state x="212" y="176" key="SettingsEditor/0.0.1536.920@0.0.1536.920" timestamp="1595497957974" />
     <state x="285" y="89" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1594408064651" />
-    <state x="362" y="195" key="Vcs.Push.Dialog.v2" timestamp="1595498099471">
+    <state x="362" y="195" key="Vcs.Push.Dialog.v2" timestamp="1596451336344">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
-    <state x="362" y="195" key="Vcs.Push.Dialog.v2/0.0.1536.920@0.0.1536.920" timestamp="1595498099471" />
+    <state x="362" y="195" key="Vcs.Push.Dialog.v2/0.0.1536.920@0.0.1536.920" timestamp="1596451336344" />
     <state x="453" y="220" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1594327913150" />
-    <state x="529" y="303" key="com.intellij.ide.util.TipDialog" timestamp="1596447623700">
-      <screen x="0" y="0" width="1536" height="920" />
+    <state x="661" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1597432754289">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="441" y="250" key="com.intellij.ide.util.TipDialog/0.0.1280.760@0.0.1280.760" timestamp="1594970985014" />
-    <state x="529" y="303" key="com.intellij.ide.util.TipDialog/0.0.1536.920@0.0.1536.920" timestamp="1596447623700" />
-    <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594819370783" />
+    <state x="529" y="303" key="com.intellij.ide.util.TipDialog/0.0.1536.920@0.0.1536.920" timestamp="1597148501269" />
+    <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597432754289" />
     <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592425589775">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

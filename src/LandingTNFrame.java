@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class LandingTNFrame extends JFrame implements ActionListener {
     Container container = getContentPane();
@@ -27,6 +28,7 @@ public class LandingTNFrame extends JFrame implements ActionListener {
         addActionEvent();
 
     }
+
     public void setLayoutManager() {
         container.setLayout(null);
     }
@@ -50,6 +52,14 @@ public class LandingTNFrame extends JFrame implements ActionListener {
     public void setTextSizeAndStyle() {
         weekView.setFont(weekView.getFont().deriveFont(20f));
         calView.setFont(calView.getFont().deriveFont(20f));
+
+        practicalsButton.setFont(calView.getFont().deriveFont(20f));
+        remindersButton.setFont(calView.getFont().deriveFont(20f));
+        tasksButton.setFont(calView.getFont().deriveFont(20f));
+        databaseButton.setFont(calView.getFont().deriveFont(20f));
+        settingsButton.setFont(calView.getFont().deriveFont(20f));
+        logOutButton.setFont(calView.getFont().deriveFont(20f));
+        //TODO Change font size for sidebar buttons
     }
 
     public void addComponentsToContainer() {
