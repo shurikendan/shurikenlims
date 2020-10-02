@@ -1,3 +1,9 @@
 tech:1
-teacher:2
+test2:1
+test3:2
+test:0
+teach:2
 admin:0
+asdf:0
+asdfgh:2
+asdfg:2

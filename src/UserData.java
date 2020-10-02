@@ -8,6 +8,8 @@ import java.io.*;
 import java.nio.Buffer;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 import java.lang.String;
 
@@ -58,7 +60,8 @@ public class UserData {
 
         //Puts username and priv into hashmap then stores in file
         privMap.put(username, priv);
-        privToFile((HashMap<String, String>) privMap);
+        //privToFile((HashMap<String, String>) privMap);
+        addPrivMapToDatabase(privMap);
     }
 
     /**
@@ -82,11 +85,7 @@ public class UserData {
             FileOutputStream fos = new FileOutputStream(mapFile);
             PrintWriter pw = new PrintWriter(fos);
             for (Map.Entry<String, String> m : map.entrySet()) {
-                if (m.getKey().contains("=")) {
-                    String[] keyParts = m.getKey().split("=");
-                    key = keyParts[0];
-                }
-                pw.println(key + "=" + m.getValue());
+                pw.println(m.getKey() + "=" + m.getValue());
                 System.out.println(m.getKey());
             }
             pw.flush();
@@ -94,7 +93,7 @@ public class UserData {
             fos.close();
         }
         catch (IOException e) {
-            e.printStackTrace();     //TODO fix why the colons are getting replaced with =s
+            e.printStackTrace();
         }
     }
 
@@ -108,7 +107,7 @@ public class UserData {
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(filePath));
                 while ((line = reader.readLine()) != null) {
-                    String[] parts = line.split(":", 2);
+                    String[] parts = line.split("=", 2);
                     if (parts.length >= 2) {
                         String key = parts[0];
                         String value = parts[1];
@@ -162,6 +161,29 @@ public class UserData {
         }
     }
 
+    public void addPrivMapToDatabase(Map<String, String> map) {
+        for (Map.Entry<String, String> m : map.entrySet()) {
+            Base.writeStringMapToDatabase(m.getKey(), m.getValue(), "privLevels", "user", "level");
+        }
+    }
+
+    public void getPrivMapFromDatabase() {
+        ResultSet results = Base.getStringMapFromDatabase("privLevels", "user", "level");
+        try {
+            while(results.next()) {
+              String user = results.getString("user");
+              System.out.println(user);
+              String level = results.getString("level");
+              System.out.println(level);
+              privMap.put(user, level);
+            }
+        }
+        catch (SQLException e) {
+            System.out.println("[EXCEPTION] ");
+            e.printStackTrace();
+        }
+    }
+
     public void privToMap() {
         {
             String filePath = "dat/priv.txt";
@@ -192,7 +214,7 @@ public class UserData {
     }
 
     //Finds and returns the privelige level of a user when called.
-    public String getPriv(String username) throws IOException {
+    public String getPriv(String username) {
         String priv = null;
         try {
             File toRead = new File("dat/priv.txt");
@@ -214,8 +236,7 @@ public class UserData {
 
 
     //Checks if username and password match
-    public boolean isLoginCorrect(String usernameInput, char[] password) throws InvalidKeySpecException,
-            NoSuchAlgorithmException {
+    public boolean isLoginCorrect(String usernameInput, char[] password) {
         //Loads the hashmap from map.txt
         String storedPassword = null;
         try {

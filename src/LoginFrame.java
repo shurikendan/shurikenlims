@@ -80,12 +80,19 @@ public class LoginFrame extends JFrame implements ActionListener {
         optionButton.addActionListener(this);
     }
 
+    /**
+     * Handles process of user login. Calls UserData class.
+     */
     public void login() {
         String userText;
         char[] pwdText;
         //Get whatever's inside the username and password fields
         userText = userTextField.getText();
         pwdText = passField.getPassword();
+        if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
+            launchLandingPage(UserData.getInstance().getPriv(userText));
+        }
+        /*
         try {
             //Checks if the login is correct
             if (UserData.getInstance().isLoginCorrect(userText, pwdText)) {
@@ -116,16 +123,44 @@ public class LoginFrame extends JFrame implements ActionListener {
         catch (InvalidKeySpecException | NoSuchAlgorithmException | IOException e) {
             e.printStackTrace();
         }
+         */
     }
 
+    private void launchLandingPage(String privLevel) {
+        switch(privLevel) {
+            case "0":
+                System.out.println("Admin Page");
+                break;
+            case "1":
+                System.out.println("Technician Page");
+                break;
+            case "2":
+                System.out.println("Teacher Page");
+                break;
+        }
+    }
+
+    /**
+     * Resets JTextFields to be empty
+     * @param field JTextField object to be reset
+     */
     public void resetTextField(JTextField field) {
         field.setText("");
     }
 
+    /**
+     * Resets JPasswordFields to be empty
+     * @param field JPasswordField object to be reset
+     */
     public void resetPassField(JPasswordField field) {
         field.setText("");
     }
 
+    /**
+     * Changes the characters in a JPasswordField to be un/readable depending on the status of a JCheckBox.
+     * @param field JPasswordField to have legibility changed
+     * @param box JCheckBox to have status confirmed
+     */
     public void showPassword(JPasswordField field, JCheckBox box) {
         if (box.isSelected()) {
             //Change the characters to be readable

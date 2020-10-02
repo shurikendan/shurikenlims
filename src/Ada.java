@@ -55,6 +55,7 @@ public class Ada {
         //Concatenates the three components to be stored
         System.out.println(toHex(salt) + ":" + toHex(hash));
         toBeStored = toHex(salt) + ":" + toHex(hash);
+
         return toBeStored;
     }
 

@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.sql.Statement;
 
 
 public class main {
@@ -23,13 +24,16 @@ public class main {
         }
         //Loads data from file into HashMap Object
         UserData.getInstance().fileToMap();
-        UserData.getInstance().privToMap();
+        //UserData.getInstance().privToMap();
+        UserData.getInstance().getPrivMapFromDatabase();
         Login.main(null);
         //System.out.println(UserData.getInstance().getPriv("test1"));
-        //char[] ps;
-        //String str = "password123!";
-        //ps = str.toCharArray();
-        //UserData.getInstance().registerUser("admin", ps, "0");
+        /*
+        char[] ps;
+        String str = "password123!";
+        ps = str.toCharArray();
+        UserData.getInstance().registerUser("admin", ps, "0");
+         */
         /*
         LoginFrame loginFrame = new LoginFrame();
         loginFrame.setTitle("Shuriken LIMS");
@@ -38,6 +42,5 @@ public class main {
         loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         loginFrame.setResizable(false);
          */
-
     }
 }

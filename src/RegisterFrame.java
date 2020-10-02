@@ -191,8 +191,8 @@ public class RegisterFrame extends JFrame implements ActionListener {
                 priv = "2"; //Teacher
             }
             else {
-                if (privIndex == 1) {
-                    priv = "1"; //Technician
+                if (privIndex == 1) {           //TODO could be done with a switch/case
+                    priv = "1"; //Technician         //TODO could be modularised
                 }
                 else {
                     if (privIndex == 2) {
@@ -200,25 +200,24 @@ public class RegisterFrame extends JFrame implements ActionListener {
                     }
                 }
             }
-            try {
-                if (UserData.getInstance().isLoginCorrect(adminUserText, adminPwdText)) {
-                    JOptionPane.showMessageDialog(this, "Correct Admin Credentials");
-                    adminUserTextField.setEnabled(false);
-                    adminPassField.setEnabled(false);
-                    adminShowPassword.setEnabled(false);
-                    adminLoginButton.setEnabled(false);
-                    System.out.println("[DEBUG] [REGISTER] Admin Approved");
-                    UserData.getInstance().registerUser(regUserText, regPwdText, priv);
-                    System.out.println("[DEBUG] [REGISTER] User Created");
-                    JOptionPane.showMessageDialog(this, "User created successfully");
-                }
-                else {
-                    JOptionPane.showMessageDialog(this, "Incorrect Admin Credentials");
-                }
+            if (UserData.getInstance().isLoginCorrect(adminUserText, adminPwdText)) {
+                JOptionPane.showMessageDialog(this, "Correct Admin Credentials");
+                adminUserTextField.setEnabled(false);
+                adminPassField.setEnabled(false);
+                adminShowPassword.setEnabled(false);
+                adminLoginButton.setEnabled(false);
+                System.out.println("[DEBUG] [REGISTER] Admin Approved");
+
+                UserData.getInstance().registerUser(regUserText, regPwdText, priv);
+
+                System.out.println("[DEBUG] [REGISTER] User Created");
+                JOptionPane.showMessageDialog(this, "User created successfully");
             }
-            catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
-                e.printStackTrace();
+            else {
+                JOptionPane.showMessageDialog(this, "Incorrect Admin Credentials");
             }
+
+
 
         }
 
@@ -266,6 +265,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
                                         }
                                     }
                                 }
+                                //TODO makes all of this look neater
                                 if (caps >= capsReq && numer >= numerReq && speci >= speciReq) {
                                     System.out.println("[DEBUG] [REGISTER] Password Meets Complexity Requirements");
                                     regUserTextField.setEnabled(false);
