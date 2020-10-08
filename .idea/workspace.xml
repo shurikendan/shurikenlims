@@ -5,21 +5,12 @@
     <option name="CUSTOM_SCOPE_NAME" value="Current File" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a010467-b325-48e0-b816-b029401eec53" name="Default Changelist" comment="Privilege write to database working. Privilege read not working.">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="4a010467-b325-48e0-b816-b029401eec53" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dat/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dat/map.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dat/priv.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dat/priv.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/Ada.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/Ada.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/LoginFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/RegisterFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/RegisterFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/UserData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/UserData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlite/SQLiteStudio/InstallationLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/InstallationLog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlite/db/lims.db" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite/db/lims.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ada.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RegisterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegisterFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
@@ -225,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596451327693</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Privilege write to database working. Privilege read not working.">
+      <created>1601626731569</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1601626731569</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -273,11 +271,11 @@
       <screen x="0" y="0" width="1536" height="920" />
     </state>
     <state x="535" y="265" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.920@0.0.1536.920" timestamp="1601465304639" />
-    <state x="996" y="205" key="#com.intellij.ide.util.MemberChooser" timestamp="1601623028523">
+    <state x="996" y="205" key="#com.intellij.ide.util.MemberChooser" timestamp="1602156258321">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
     <state x="830" y="170" key="#com.intellij.ide.util.MemberChooser/0.0.1280.760@0.0.1280.760" timestamp="1594971419212" />
-    <state x="996" y="205" key="#com.intellij.ide.util.MemberChooser/0.0.1536.920@0.0.1536.920" timestamp="1601623028523" />
+    <state x="996" y="205" key="#com.intellij.ide.util.MemberChooser/0.0.1536.920@0.0.1536.920" timestamp="1602156258321" />
     <state x="1245" y="232" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1594365802052" />
     <state x="551" y="268" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1596447982317">
       <screen x="0" y="0" width="1536" height="920" />
@@ -291,68 +289,68 @@
       <screen x="0" y="0" width="1536" height="920" />
     </state>
     <state x="500" y="209" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.920@0.0.1536.920" timestamp="1596447681470" />
-    <state x="416" y="58" width="1105" height="901" key="CommitChangelistDialog2" timestamp="1601626549389">
+    <state x="416" y="58" width="1105" height="901" key="CommitChangelistDialog2" timestamp="1601626729897">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
-    <state x="416" y="58" key="CommitChangelistDialog2/0.0.1536.920@0.0.1536.920" timestamp="1601626549389" />
+    <state x="416" y="58" key="CommitChangelistDialog2/0.0.1536.920@0.0.1536.920" timestamp="1601626729897" />
     <state x="520" y="66" width="1105" height="901" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1594327910253" />
     <state x="592" y="242" key="FileChooserDialogImpl" timestamp="1595496022782">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
     <state x="592" y="242" key="FileChooserDialogImpl/0.0.1536.920@0.0.1536.920" timestamp="1595496022782" />
-    <state width="1493" height="300" key="GridCell.Tab.0.bottom" timestamp="1601626389374">
+    <state width="1493" height="300" key="GridCell.Tab.0.bottom" timestamp="1602156454503">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
     <state width="1493" height="214" key="GridCell.Tab.0.bottom/0.0.1536.920/1066.-1080.1920.1040@0.0.1536.920" timestamp="1597436927053" />
     <state width="1877" height="214" key="GridCell.Tab.0.bottom/0.0.1536.920/1066.-1080.1920.1040@1066.-1080.1920.1040" timestamp="1597433283642" />
-    <state width="1493" height="300" key="GridCell.Tab.0.bottom/0.0.1536.920@0.0.1536.920" timestamp="1601626389374" />
+    <state width="1493" height="300" key="GridCell.Tab.0.bottom/0.0.1536.920@0.0.1536.920" timestamp="1602156454503" />
     <state width="1877" height="214" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597433142830" />
-    <state width="1493" height="300" key="GridCell.Tab.0.center" timestamp="1601626389374">
+    <state width="1493" height="300" key="GridCell.Tab.0.center" timestamp="1602156454503">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
     <state width="1493" height="214" key="GridCell.Tab.0.center/0.0.1536.920/1066.-1080.1920.1040@0.0.1536.920" timestamp="1597436927053" />
     <state width="1877" height="214" key="GridCell.Tab.0.center/0.0.1536.920/1066.-1080.1920.1040@1066.-1080.1920.1040" timestamp="1597433283642" />
-    <state width="1493" height="300" key="GridCell.Tab.0.center/0.0.1536.920@0.0.1536.920" timestamp="1601626389374" />
+    <state width="1493" height="300" key="GridCell.Tab.0.center/0.0.1536.920@0.0.1536.920" timestamp="1602156454503" />
     <state width="1877" height="214" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597433142830" />
-    <state width="1493" height="300" key="GridCell.Tab.0.left" timestamp="1601626389374">
+    <state width="1493" height="300" key="GridCell.Tab.0.left" timestamp="1602156454503">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
     <state width="1493" height="214" key="GridCell.Tab.0.left/0.0.1536.920/1066.-1080.1920.1040@0.0.1536.920" timestamp="1597436927053" />
     <state width="1877" height="214" key="GridCell.Tab.0.left/0.0.1536.920/1066.-1080.1920.1040@1066.-1080.1920.1040" timestamp="1597433283641" />
-    <state width="1493" height="300" key="GridCell.Tab.0.left/0.0.1536.920@0.0.1536.920" timestamp="1601626389374" />
+    <state width="1493" height="300" key="GridCell.Tab.0.left/0.0.1536.920@0.0.1536.920" timestamp="1602156454503" />
     <state width="1877" height="214" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597433142830" />
-    <state width="1493" height="300" key="GridCell.Tab.0.right" timestamp="1601626389374">
+    <state width="1493" height="300" key="GridCell.Tab.0.right" timestamp="1602156454503">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
     <state width="1493" height="214" key="GridCell.Tab.0.right/0.0.1536.920/1066.-1080.1920.1040@0.0.1536.920" timestamp="1597436927053" />
     <state width="1877" height="214" key="GridCell.Tab.0.right/0.0.1536.920/1066.-1080.1920.1040@1066.-1080.1920.1040" timestamp="1597433283642" />
-    <state width="1493" height="300" key="GridCell.Tab.0.right/0.0.1536.920@0.0.1536.920" timestamp="1601626389374" />
+    <state width="1493" height="300" key="GridCell.Tab.0.right/0.0.1536.920@0.0.1536.920" timestamp="1602156454503" />
     <state width="1877" height="214" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597433142830" />
-    <state width="1493" height="300" key="GridCell.Tab.1.bottom" timestamp="1601626389374">
+    <state width="1493" height="300" key="GridCell.Tab.1.bottom" timestamp="1602156441563">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
-    <state width="1493" height="300" key="GridCell.Tab.1.bottom/0.0.1536.920@0.0.1536.920" timestamp="1601626389374" />
-    <state width="1493" height="300" key="GridCell.Tab.1.center" timestamp="1601626389374">
+    <state width="1493" height="300" key="GridCell.Tab.1.bottom/0.0.1536.920@0.0.1536.920" timestamp="1602156441563" />
+    <state width="1493" height="300" key="GridCell.Tab.1.center" timestamp="1602156441563">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
-    <state width="1493" height="300" key="GridCell.Tab.1.center/0.0.1536.920@0.0.1536.920" timestamp="1601626389374" />
-    <state width="1493" height="300" key="GridCell.Tab.1.left" timestamp="1601626389374">
+    <state width="1493" height="300" key="GridCell.Tab.1.center/0.0.1536.920@0.0.1536.920" timestamp="1602156441563" />
+    <state width="1493" height="300" key="GridCell.Tab.1.left" timestamp="1602156441563">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
-    <state width="1493" height="300" key="GridCell.Tab.1.left/0.0.1536.920@0.0.1536.920" timestamp="1601626389374" />
-    <state width="1493" height="300" key="GridCell.Tab.1.right" timestamp="1601626389374">
+    <state width="1493" height="300" key="GridCell.Tab.1.left/0.0.1536.920@0.0.1536.920" timestamp="1602156441563" />
+    <state width="1493" height="300" key="GridCell.Tab.1.right" timestamp="1602156441563">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
-    <state width="1493" height="300" key="GridCell.Tab.1.right/0.0.1536.920@0.0.1536.920" timestamp="1601626389374" />
+    <state width="1493" height="300" key="GridCell.Tab.1.right/0.0.1536.920@0.0.1536.920" timestamp="1602156441563" />
     <state x="212" y="176" key="SettingsEditor" timestamp="1595497957974">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
     <state x="212" y="176" key="SettingsEditor/0.0.1536.920@0.0.1536.920" timestamp="1595497957974" />
     <state x="285" y="89" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1594408064651" />
-    <state x="362" y="195" key="Vcs.Push.Dialog.v2" timestamp="1601626667736">
+    <state x="362" y="195" key="Vcs.Push.Dialog.v2" timestamp="1601626736442">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
-    <state x="362" y="195" key="Vcs.Push.Dialog.v2/0.0.1536.920@0.0.1536.920" timestamp="1601626667736" />
+    <state x="362" y="195" key="Vcs.Push.Dialog.v2/0.0.1536.920@0.0.1536.920" timestamp="1601626736442" />
     <state x="453" y="220" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1594327913150" />
     <state x="661" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1597432754289">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -368,6 +366,17 @@
       <screen x="0" y="0" width="1536" height="920" />
     </state>
     <state x="431" y="196" width="672" height="678" key="search.everywhere.popup/0.0.1536.920@0.0.1536.920" timestamp="1601537261094" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/UserData.java</url>
+          <line>172</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>

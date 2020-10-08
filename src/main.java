@@ -10,11 +10,12 @@ import javax.swing.*;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 
 public class main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         //TODO Change LookAndFeel
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

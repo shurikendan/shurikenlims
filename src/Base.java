@@ -1,4 +1,7 @@
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Base {
 
@@ -54,10 +57,25 @@ public class Base {
         System.out.println("[DEBUG] [MAP DESERIALISATION] Success in writing to database");
     }
 
-    public static ResultSet getStringMapFromDatabase(String table, String keyColumn, String valueColumn) {
+    public static HashMap<String, String> getStringMapFromDatabase(String table, String keyColumn, String valueColumn) {
         String sql = "SELECT " + keyColumn + ", " + valueColumn + " FROM " + table + ";";
-        return executeQuery(sql);
+        Map<String, String> returnMap  = new HashMap<>();
+        try (Connection connection = DriverManager.getConnection(url)) {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            Map<String, String> resultsMap = new HashMap<>();         //TODO good one
+            while(rs.next()) {
+                resultsMap.put(rs.getString(keyColumn), rs.getString(valueColumn));
+                returnMap = resultsMap;
+            }
+        }
+        catch (SQLException e) {
+            e.getStackTrace();
+        }
+
+        return (HashMap<String, String>) returnMap;
     }
+
 
     public static void main(String[] args) {
         connect();
@@ -68,24 +86,28 @@ public class Base {
     private static void executeStatement(String[] sql) {
         try (Connection connection = DriverManager.getConnection(url);
              Statement statement = connection.createStatement()) {
-            for(String i : sql) {
+            for (String i : sql) {
                 statement.execute(i);
             }
-        }
-        catch (SQLException exception) {
+        } catch (SQLException exception) {
             System.out.println("[EXCEPTION] " + exception.getMessage());
         }
     }
 
-    public static ResultSet executeQuery(String sql) {
-        ResultSet results = null;
+
+
+    public static ResultSet executeQuery(String sql) throws SQLException {
+        ResultSet returnSet = null;
         try (Connection connection = DriverManager.getConnection(url);
              Statement statement = connection.createStatement()) {
-            results = statement.executeQuery(sql);
+            ResultSet results = statement.executeQuery(sql);
+            returnSet = results;
         }
         catch (SQLException exception) {
             System.out.println("[EXCEPTION] " + exception.getMessage());
         }
-        return results;
+        return returnSet;
     }
+
 }
+

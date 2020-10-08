@@ -167,21 +167,10 @@ public class UserData {
         }
     }
 
-    public void getPrivMapFromDatabase() {
-        ResultSet results = Base.getStringMapFromDatabase("privLevels", "user", "level");
-        try {
-            while(results.next()) {
-              String user = results.getString("user");
-              System.out.println(user);
-              String level = results.getString("level");
-              System.out.println(level);
-              privMap.put(user, level);
-            }
-        }
-        catch (SQLException e) {
-            System.out.println("[EXCEPTION] ");
-            e.printStackTrace();
-        }
+    public void getPrivMapFromDatabase() throws SQLException {
+        HashMap<String, String> resultsMap = Base.getStringMapFromDatabase("privLevels", "user", "level");
+        privMap = resultsMap;
+        System.out.println(privMap);
     }
 
     public void privToMap() {

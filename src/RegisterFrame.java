@@ -49,6 +49,12 @@ public class RegisterFrame extends JFrame implements ActionListener {
 
     JSeparator sep = new JSeparator();
 
+    Component[] swingObjects = {backButton, regUserLabel, regPassLabel, regConfirmPassLabel, regUserTextField,
+            regPassField, regConfirmPassField, priveligesComboBox, regLoginButton,
+            regResetButton, regShowPassword, adminUserLabel, adminPassLabel, adminUserTextField, adminPassField,
+            adminLoginButton, adminResetButton, adminShowPassword, sep};
+
+
     /**
      * Constructor
      */
@@ -58,11 +64,9 @@ public class RegisterFrame extends JFrame implements ActionListener {
         addComponentsToContainer();
         addActionEvent();
 
-        adminLoginButton.setEnabled(false);
-        adminUserTextField.setEnabled(false);
-        adminPassField.setEnabled(false);
-        adminShowPassword.setEnabled(false);
-        adminResetButton.setEnabled(false);
+
+
+        setFieldsDisabled();
     }
 
     /**
@@ -118,7 +122,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
      * Adds compinents to container
      */
     public void addComponentsToContainer() {
-
+        /*
         regContainer.add(backButton);
 
         //New user's details elements
@@ -144,6 +148,12 @@ public class RegisterFrame extends JFrame implements ActionListener {
 
         regContainer.add(sep);
 
+         */
+
+        for(Component component : swingObjects) {
+            regContainer.add(component);
+        }
+
     }
 
 
@@ -163,6 +173,13 @@ public class RegisterFrame extends JFrame implements ActionListener {
 
     }
 
+    public void setFieldsDisabled() {
+        adminLoginButton.setEnabled(false);
+        adminUserTextField.setEnabled(false);
+        adminPassField.setEnabled(false);
+        adminShowPassword.setEnabled(false);
+        adminResetButton.setEnabled(false);
+    }
 
     //Action events
     @Override
