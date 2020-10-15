@@ -19,6 +19,7 @@ public class LandingTNFrame extends JFrame implements ActionListener {
     JButton databaseButton = new JButton("Database");
     JButton settingsButton = new JButton("Settings");
     JButton logOutButton = new JButton("Log Out");
+    JTextArea overviewTextArea = new JTextArea();
 
     LandingTNFrame() {
         setLayoutManager();
@@ -26,6 +27,7 @@ public class LandingTNFrame extends JFrame implements ActionListener {
         setTextSizeAndStyle();
         addComponentsToContainer();
         addActionEvent();
+        handleOverviewArea();
 
     }
 
@@ -47,6 +49,7 @@ public class LandingTNFrame extends JFrame implements ActionListener {
         databaseButton.setBounds(10, 364, 236, 108);
         settingsButton.setBounds(10, 482, 236, 108);
         logOutButton.setBounds(10, 600, 236, 108);
+        overviewTextArea.setBounds(266, 405, 490, 300);
     }
 
     public void setTextSizeAndStyle() {
@@ -76,6 +79,7 @@ public class LandingTNFrame extends JFrame implements ActionListener {
         container.add(databaseButton);
         container.add(settingsButton);
         container.add(logOutButton);
+        container.add(overviewTextArea);
     }
 
     public void addActionEvent() {
@@ -91,5 +95,15 @@ public class LandingTNFrame extends JFrame implements ActionListener {
             Login.main(null);
             super.dispose();
         }
+    }
+
+    public void handleOverviewArea() {
+        overviewTextArea.setText("Tasks will go here when they work");
+        overviewTextArea.setFont(calView.getFont().deriveFont(15f));
+        System.out.println(Base.fetchTasks());
+
+
+
+
     }
 }

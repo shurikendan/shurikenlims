@@ -23,9 +23,15 @@ public class UserData {
      */
     private static UserData instance = new UserData();
 
+    public String currentUser = null;
+
     //Defines the two hashmaps
     private Map<String, String> userMap = new HashMap<>();
     private Map<String, String> privMap = new HashMap<>();
+
+    public String getUser() {
+        return currentUser;
+    }
 
     /**
      * Makes sure class is always singleton

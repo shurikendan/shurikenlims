@@ -1,4 +1,3 @@
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -6,6 +5,11 @@ import java.util.Map;
 public class Base {
 
     private static String url = "jdbc:sqlite:C:/Users/Daniel/IdeaProjects/shurikenlims/sqlite/db/lims.db";
+
+    public static void main(String[] args) {
+        connect();
+        createTable();
+    }
 
     private static void connect() {
         try (Connection connection = DriverManager.getConnection(url)) {
@@ -20,6 +24,10 @@ public class Base {
         }
 
     }
+
+    /**
+     * Creates database tables
+     */
     private static void createTable() {
         String[] sql = {"CREATE TABLE IF NOT EXISTS privLevels (\n"
                 + "user STRING,\n"
@@ -29,11 +37,37 @@ public class Base {
                 "CREATE TABLE IF NOT EXISTS hashes (\n"
                 + "user STRING,\n"
                 + "hash STRING\n"
+                + ");\n",
+
+                "CREATE TABLE IF NOT EXISTS tasks (\n"
+                + "user STRING, \n"
+                + "message STRING, \n"
+                + "due DATE"
                 + ");\n"};
         executeStatement(sql);
     }
 
-    public static void fetchTasks(String user) {
+
+    //Doesn't work
+
+    public static HashMap<String, Date> fetchTasks() {
+        String user = UserData.getInstance().getUser();
+        String sql = "SELECT message, due FROM tasks WHERE user= '" + user + "';";
+        Map<String, Date> tasksMap = new HashMap<>();
+        try (Connection connection = DriverManager.getConnection(url)) {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            Map<String, Date> resultsMap = new HashMap<>();
+            while(rs.next()) {
+                resultsMap.put(rs.getString("message"), rs.getDate("due"));
+                tasksMap = resultsMap;
+            }
+        }
+        catch (SQLException e) {
+            e.getStackTrace();
+        }
+
+        return (HashMap<String, Date>) tasksMap;
 
     }
 
@@ -48,7 +82,6 @@ public class Base {
      */
     public static void writeStringMapToDatabase(String key, String value, String table, String keyColumn,
                                                 String valueColumn) {
-        //String url = "jdbc:sqlite:C:/Users/Daniel/IdeaProjects/shurikenlims/sqlite/db/lims.db";
         String[] sql =
                 {"INSERT INTO " + table + " (" + keyColumn + ", " + valueColumn + ")\n"
                         + "VALUES (" + "'" + key + "'" + ", " + "'" + value + "'"
@@ -57,13 +90,20 @@ public class Base {
         System.out.println("[DEBUG] [MAP DESERIALISATION] Success in writing to database");
     }
 
+    /**
+     * Retrieves map data from the database and puts it into a map to be passed between classes.
+     * @param table String name of table to get data from
+     * @param keyColumn String name of column corresponding to map key
+     * @param valueColumn String name of column corresponding to value key
+     * @return HashMap<String, String> containing results
+     */
     public static HashMap<String, String> getStringMapFromDatabase(String table, String keyColumn, String valueColumn) {
         String sql = "SELECT " + keyColumn + ", " + valueColumn + " FROM " + table + ";";
         Map<String, String> returnMap  = new HashMap<>();
         try (Connection connection = DriverManager.getConnection(url)) {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            Map<String, String> resultsMap = new HashMap<>();         //TODO good one
+            Map<String, String> resultsMap = new HashMap<>();
             while(rs.next()) {
                 resultsMap.put(rs.getString(keyColumn), rs.getString(valueColumn));
                 returnMap = resultsMap;
@@ -77,12 +117,10 @@ public class Base {
     }
 
 
-    public static void main(String[] args) {
-        connect();
-        createTable();
-    }
-    //TODO could move this
-
+    /**
+     * Executes sql statement passed in
+     * @param sql String results of statement, if any
+     */
     private static void executeStatement(String[] sql) {
         try (Connection connection = DriverManager.getConnection(url);
              Statement statement = connection.createStatement()) {
@@ -95,8 +133,12 @@ public class Base {
     }
 
 
-
-    public static ResultSet executeQuery(String sql) throws SQLException {
+    /**
+     * Executes query on database
+     * @param sql String query to be run on database
+     * @return ResultSet of results
+     */
+    public static ResultSet executeQuery(String sql) {
         ResultSet returnSet = null;
         try (Connection connection = DriverManager.getConnection(url);
              Statement statement = connection.createStatement()) {

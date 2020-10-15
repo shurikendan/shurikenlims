@@ -133,6 +133,7 @@ public class LoginFrame extends JFrame implements ActionListener {
                 break;
             case "1":
                 System.out.println("Technician Page");
+                LandingTN.main(null);
                 break;
             case "2":
                 System.out.println("Teacher Page");
