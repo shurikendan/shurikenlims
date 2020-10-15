@@ -1,8 +1,11 @@
+import com.github.lgooddatepicker.components.CalendarPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 
 public class LandingTNFrame extends JFrame implements ActionListener {
     Container container = getContentPane();
@@ -20,6 +23,7 @@ public class LandingTNFrame extends JFrame implements ActionListener {
     JButton settingsButton = new JButton("Settings");
     JButton logOutButton = new JButton("Log Out");
     JTextArea overviewTextArea = new JTextArea();
+    CalendarPanel calendar = new CalendarPanel();
 
     LandingTNFrame() {
         setLayoutManager();
@@ -50,6 +54,7 @@ public class LandingTNFrame extends JFrame implements ActionListener {
         settingsButton.setBounds(10, 482, 236, 108);
         logOutButton.setBounds(10, 600, 236, 108);
         overviewTextArea.setBounds(266, 405, 490, 300);
+        calendar.setBounds(770, 400, 250, 300);
     }
 
     public void setTextSizeAndStyle() {
@@ -80,6 +85,8 @@ public class LandingTNFrame extends JFrame implements ActionListener {
         container.add(settingsButton);
         container.add(logOutButton);
         container.add(overviewTextArea);
+        container.add(calendar);
+
     }
 
     public void addActionEvent() {
