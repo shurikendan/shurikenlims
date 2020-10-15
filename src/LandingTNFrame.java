@@ -98,9 +98,13 @@ public class LandingTNFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if(actionEvent.getSource() == logOutButton) {
+        Object source = actionEvent.getSource();
+        if (logOutButton.equals(source)) {
             Login.main(null);
             super.dispose();
+        }
+        else if (practicalsButton.equals(source)) {
+            PracticalBook.main(null);
         }
     }
 

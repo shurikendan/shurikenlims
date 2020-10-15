@@ -23,10 +23,11 @@ public class PracticalBookFrame extends JFrame implements ActionListener {
     JPanel pickerPanel = new JPanel();
     JPanel classPanel = new JPanel();
     JPanel codePanel = new JPanel();
+    JPanel buttonPanel = new JPanel();
+    JButton saveButton = new JButton("Save");
+    JButton cancelButton = new JButton("Cancel");
     Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
-    GridLayout layout = new GridLayout(0,1);
-
-
+    GridLayout layout = new GridLayout(0, 1);
 
     PracticalBookFrame() {
         setLayoutManager();
@@ -58,6 +59,10 @@ public class PracticalBookFrame extends JFrame implements ActionListener {
         detailPanel.add(scrollPane);
         container.add(detailPanel);
 
+        buttonPanel.add(cancelButton);
+        buttonPanel.add(saveButton);
+        container.add(buttonPanel);
+
     }
 
     private void setComponentProperties() {
@@ -69,17 +74,22 @@ public class PracticalBookFrame extends JFrame implements ActionListener {
         detailLabel.setFont(detailLabel.getFont().deriveFont(15f));
 
         detailTextArea.setBorder(border);
-
-
     }
 
     private void setSize() {
         classField.setColumns(10);
         codeField.setColumns(10);
+
+        buttonPanel.setLayout(null);
+        cancelButton.setBounds(5,15,130,30);
+        saveButton.setBounds(145, 15, 130, 30);
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-
+        Object source = actionEvent.getSource();
+        if(cancelButton.equals(source)) {
+            super.dispose();
+        }
     }
 }
