@@ -24,7 +24,8 @@ public class main {
             e.printStackTrace();
         }
         //Loads data from file into HashMap Object
-        UserData.getInstance().fileToMap();
+        //UserData.getInstance().fileToMap();
+        UserData.getInstance().getHashMapFromDatabase();
         //UserData.getInstance().privToMap();
         UserData.getInstance().getPrivMapFromDatabase();
         Login.main(null);

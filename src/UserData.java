@@ -62,7 +62,8 @@ public class UserData {
 
         //Puts username and password into hashmap and then stores to file
         userMap.put(username, passwordHash);
-        mapToFile((HashMap<String, String>) userMap);
+        //mapToFile((HashMap<String, String>) userMap);
+        addHashMapToDatabase(userMap);
 
         //Puts username and priv into hashmap then stores in file
         privMap.put(username, priv);
@@ -76,7 +77,7 @@ public class UserData {
      */
     public void removeUser(String username) {
         userMap.remove(username);
-        mapToFile((HashMap<String, String>) userMap);
+        //mapToFile((HashMap<String, String>) userMap);
         //TODO put priv here
     }
 
@@ -173,11 +174,25 @@ public class UserData {
         }
     }
 
-    public void getPrivMapFromDatabase() throws SQLException {
+    public void getPrivMapFromDatabase() {
         HashMap<String, String> resultsMap = Base.getStringMapFromDatabase("privLevels", "user", "level");
         privMap = resultsMap;
         System.out.println(privMap);
     }
+
+    public void addHashMapToDatabase(Map<String, String> map) {
+        for (Map.Entry<String, String> m : map.entrySet()) {
+            Base.writeStringMapToDatabase(m.getKey(), m.getValue(), "hashes", "user", "hash");
+        }
+    }
+
+    public void getHashMapFromDatabase() {
+        HashMap<String, String> resultsMap = Base.getStringMapFromDatabase("hashes", "user", "hash");
+        userMap = resultsMap;
+        System.out.println(userMap);
+    }
+
+
 
     public void privToMap() {
         {
@@ -210,7 +225,9 @@ public class UserData {
 
     //Finds and returns the privelige level of a user when called.
     public String getPriv(String username) {
+        privMap = Base.getStringMapFromDatabase("privLevels", "user", "level");
         String priv = null;
+        /*
         try {
             File toRead = new File("dat/priv.txt");
             FileInputStream fis = new FileInputStream(toRead);
@@ -221,11 +238,16 @@ public class UserData {
                 StringTokenizer st = new StringTokenizer(currentLine, ":", false);
                 privMap.put(st.nextToken(), st.nextToken());
             }
-            priv = privMap.get(username);
+
+         */
+        priv = privMap.get(username);
+        /*
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+
+         */
         return priv;
     }
 
@@ -233,7 +255,9 @@ public class UserData {
     //Checks if username and password match
     public boolean isLoginCorrect(String usernameInput, char[] password) {
         //Loads the hashmap from map.txt
+        userMap = Base.getStringMapFromDatabase("hashes", "user", "hash");
         String storedPassword = null;
+        /*
         try {
             File toRead = new File("dat/map.txt");
             FileInputStream fis = new FileInputStream(toRead);
@@ -246,12 +270,15 @@ public class UserData {
                 StringTokenizer st = new StringTokenizer(currentLine, "=", false);
                 userMap.put(st.nextToken(), st.nextToken());
             }
-            storedPassword = userMap.get(usernameInput);
-            fis.close();
-
+         */
+        storedPassword = userMap.get(usernameInput);
+            //fis.close();
+        /*
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+         */
 
         //If the username isn't found in the map...
 

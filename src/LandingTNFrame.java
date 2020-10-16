@@ -106,6 +106,9 @@ public class LandingTNFrame extends JFrame implements ActionListener {
         else if (practicalsButton.equals(source)) {
             PracticalBook.main(null);
         }
+        else if (tasksButton.equals(source)) {
+            Base.getPracticalFromDatabase();
+        }
     }
 
     public void handleOverviewArea() {

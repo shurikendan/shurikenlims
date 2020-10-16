@@ -34,6 +34,7 @@ public class PracticalBookFrame extends JFrame implements ActionListener {
         addComponentsToContainer();
         setSize();
         setComponentProperties();
+        addActionListeners();
 
     }
 
@@ -85,11 +86,30 @@ public class PracticalBookFrame extends JFrame implements ActionListener {
         saveButton.setBounds(145, 15, 130, 30);
     }
 
+    private void addActionListeners() {
+        cancelButton.addActionListener(this);
+        saveButton.addActionListener(this);
+    }
+
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        Object source = actionEvent.getSource();
-        if(cancelButton.equals(source)) {
+        if(actionEvent.getSource() == cancelButton) {
             super.dispose();
+        }
+        else {
+            if(actionEvent.getSource() == saveButton) {
+                System.out.println(picker.getDatePicker().getText());
+                System.out.println(picker.getTimePicker().getText());
+                System.out.println(classField.getText());
+                System.out.println(codeField.getText());
+                System.out.println(detailTextArea.getText());
+                String date = picker.getDatePicker().getText();
+                String time = picker.getTimePicker().getText();
+                String _class = classField.getText();
+                String code = codeField.getText();
+                String message = detailTextArea.getText();
+                Base.writePracticalToDatabase(date, time, _class, code, message);
+            }
         }
     }
 }

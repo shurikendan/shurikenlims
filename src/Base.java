@@ -42,8 +42,16 @@ public class Base {
                 "CREATE TABLE IF NOT EXISTS tasks (\n"
                 + "user STRING, \n"
                 + "message STRING, \n"
-                + "due DATE"
-                + ");\n"};
+                + "due DATE\n"
+                + ");\n",
+
+                "CREATE TABLE IF NOT EXISTS practicals (\n"
+                + "date STRING, \n"
+                + "time STRING, \n"
+                + "class STRING, \n"
+                + "code STRING, \n"
+                + "message STRING\n"
+                + ");"};
         executeStatement(sql);
     }
 
@@ -114,6 +122,33 @@ public class Base {
         }
 
         return (HashMap<String, String>) returnMap;
+    }
+
+    public static void writePracticalToDatabase(String date, String time, String _class, String code, String message) {
+        String[] sql = {
+                "INSERT INTO practicals (date, time, class, code, message) VALUES (" + "'" + date + "'" + ", "
+                        + "'" + time + "'" + ", "
+                        + "'" + _class + "'" + ", "
+                        + "'" + code + "'" + ", "
+                        + "'" + message + "'" + ");"
+        };
+        System.out.println(sql);
+        executeStatement(sql);
+        System.out.println("[DEBUG] [DATABASE WRITE] Practical written to database");
+    }
+
+    public static void getPracticalFromDatabase() {
+        String sql = "SELECT date, time, class, code, message FROM practicals;";
+        try (Connection connection = DriverManager.getConnection(url)) {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()) {
+                System.out.println(rs.getString("date"));
+            }
+        }
+        catch (SQLException e) {
+            e.getStackTrace();
+        }
     }
 
 
