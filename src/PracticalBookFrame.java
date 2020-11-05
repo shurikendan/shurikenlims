@@ -98,11 +98,6 @@ public class PracticalBookFrame extends JFrame implements ActionListener {
         }
         else {
             if(actionEvent.getSource() == saveButton) {
-                System.out.println(picker.getDatePicker().getText());
-                System.out.println(picker.getTimePicker().getText());
-                System.out.println(classField.getText());
-                System.out.println(codeField.getText());
-                System.out.println(detailTextArea.getText());
                 String date = picker.getDatePicker().getText();
                 String time = picker.getTimePicker().getText();
                 String _class = classField.getText();

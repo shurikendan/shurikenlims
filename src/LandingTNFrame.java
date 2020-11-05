@@ -4,8 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
+import java.util.Arrays;
 
 public class LandingTNFrame extends JFrame implements ActionListener {
     Container container = getContentPane();
@@ -60,14 +59,12 @@ public class LandingTNFrame extends JFrame implements ActionListener {
     public void setTextSizeAndStyle() {
         weekView.setFont(weekView.getFont().deriveFont(20f));
         calView.setFont(calView.getFont().deriveFont(20f));
-
         practicalsButton.setFont(calView.getFont().deriveFont(20f));
         remindersButton.setFont(calView.getFont().deriveFont(20f));
         tasksButton.setFont(calView.getFont().deriveFont(20f));
         databaseButton.setFont(calView.getFont().deriveFont(20f));
         settingsButton.setFont(calView.getFont().deriveFont(20f));
         logOutButton.setFont(calView.getFont().deriveFont(20f));
-        //TODO Change font size for sidebar buttons
     }
 
     public void addComponentsToContainer() {
@@ -86,13 +83,14 @@ public class LandingTNFrame extends JFrame implements ActionListener {
         container.add(logOutButton);
         container.add(overviewTextArea);
         container.add(calendar);
-
     }
 
     public void addActionEvent() {
         practicalsButton.addActionListener(this);
         remindersButton.addActionListener(this);
+        tasksButton.addActionListener(this);
         settingsButton.addActionListener(this);
+        databaseButton.addActionListener(this);
         logOutButton.addActionListener(this);
     }
 
@@ -109,15 +107,21 @@ public class LandingTNFrame extends JFrame implements ActionListener {
         else if (tasksButton.equals(source)) {
             Base.getPracticalFromDatabase();
         }
+        else if (databaseButton.equals(source)) {
+            BaseView.main(null);
+        }
     }
 
     public void handleOverviewArea() {
-        overviewTextArea.setText("Tasks will go here when they work");
+        StringBuilder builder = new StringBuilder();
+        for (String value : Base.getPracticalFromDatabase()) {
+            builder.append(value);
+        }
+        String practicalsData = builder.toString();
+        //String practicalsData = Arrays.toString(Base.getPracticalFromDatabase());
+        overviewTextArea.setText("Tasks due for week commencing 12/10/20:\n\nNo Tasks " +
+                "Found\n\nPracticals due:\n\n" + practicalsData);
         overviewTextArea.setFont(calView.getFont().deriveFont(15f));
         System.out.println(Base.fetchTasks());
-
-
-
-
     }
 }

@@ -226,7 +226,9 @@ public class UserData {
     //Finds and returns the privelige level of a user when called.
     public String getPriv(String username) {
         privMap = Base.getStringMapFromDatabase("privLevels", "user", "level");
-        String priv = null;
+        String priv;
+        priv = privMap.get(username);
+        return priv;
         /*
         try {
             File toRead = new File("dat/priv.txt");
@@ -238,25 +240,26 @@ public class UserData {
                 StringTokenizer st = new StringTokenizer(currentLine, ":", false);
                 privMap.put(st.nextToken(), st.nextToken());
             }
-
-         */
-        priv = privMap.get(username);
-        /*
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+        */
 
-         */
-        return priv;
     }
 
 
     //Checks if username and password match
     public boolean isLoginCorrect(String usernameInput, char[] password) {
-        //Loads the hashmap from map.txt
         userMap = Base.getStringMapFromDatabase("hashes", "user", "hash");
         String storedPassword = null;
+        storedPassword = userMap.get(usernameInput);
+        if (storedPassword == null) {
+            return false;
+        }
+        else {
+            return Ada.validatePassword(password, storedPassword);
+        }
         /*
         try {
             File toRead = new File("dat/map.txt");
@@ -270,25 +273,11 @@ public class UserData {
                 StringTokenizer st = new StringTokenizer(currentLine, "=", false);
                 userMap.put(st.nextToken(), st.nextToken());
             }
-         */
-        storedPassword = userMap.get(usernameInput);
-            //fis.close();
-        /*
+            fis.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-         */
-
-        //If the username isn't found in the map...
-
-        if (storedPassword == null) {
-            return false;
-        }
-        else {
-            return Ada.validatePassword(password, storedPassword);
-        }
-
+        */
 
     }
 }

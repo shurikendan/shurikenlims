@@ -1,4 +1,7 @@
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.sql.*;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -137,18 +140,27 @@ public class Base {
         System.out.println("[DEBUG] [DATABASE WRITE] Practical written to database");
     }
 
-    public static void getPracticalFromDatabase() {
+    public static String[] getPracticalFromDatabase() {
         String sql = "SELECT date, time, class, code, message FROM practicals;";
+        String[] returnArray = {};
         try (Connection connection = DriverManager.getConnection(url)) {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()) {
-                System.out.println(rs.getString("date"));
+                String date = rs.getString("date");
+                String time = rs.getString("time");
+                String _class = rs.getString("class");
+                String code = rs.getString("code");
+                String message = rs.getString("message");
+                String bigString = date + " / " + time + " / " + _class + " / " + code + "\n";
+                returnArray = ArrayUtils.add(returnArray, bigString);
+                System.out.println(Arrays.toString(returnArray));
             }
         }
         catch (SQLException e) {
             e.getStackTrace();
         }
+        return returnArray;
     }
 
 
