@@ -6,20 +6,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a010467-b325-48e0-b816-b029401eec53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_lang3_3_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/commons-lang3-3.9-javadoc.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/commons-lang3-3.9.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BaseView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TaskFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shurikenlims/UserData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shurikenlims/UserData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shurikenlims.iml" beforeDir="false" afterPath="$PROJECT_DIR$/shurikenlims.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sqlite/SQLiteStudio/InstallationLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite/SQLiteStudio/InstallationLog.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sqlite/db/lims.db" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite/db/lims.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LandingTNFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LandingTNFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonthPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PracticalBookFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PracticalBookFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +96,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Reminder" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Task" />
+      <module name="shurikenlims" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main" />
       <module name="shurikenlims" />
@@ -115,6 +115,7 @@
       <item itemvalue="Application.LandingTN" />
       <item itemvalue="Application.LandingTR" />
       <item itemvalue="Application.PracticalBook" />
+      <item itemvalue="Application.Reminder" />
       <item itemvalue="Application.main" />
     </list>
   </component>
@@ -269,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602837439658</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added database viewer.">
+      <created>1604606349101</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1604606349101</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -306,7 +314,8 @@
     <MESSAGE value="Practical booking interface added" />
     <MESSAGE value="Updated practical booking interface with buttons." />
     <MESSAGE value="Full database transfer complete." />
-    <option name="LAST_COMMIT_MESSAGE" value="Full database transfer complete." />
+    <MESSAGE value="Added database viewer." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added database viewer." />
   </component>
   <component name="WindowStateProjectService">
     <state x="677" y="178" key="#BasicDemo" timestamp="1602782349139">
@@ -317,11 +326,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="677" y="178" key="#FullDemo/0.0.1920.1040@0.0.1920.1040" timestamp="1602782371074" />
-    <state x="563" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602789074171">
+    <state x="563" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604691809006">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="450" y="196" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.920@0.0.1536.920" timestamp="1596447986470" />
-    <state x="563" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602789074171" />
+    <state x="563" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604691809006" />
     <state x="535" y="265" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602691542830">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
@@ -331,61 +339,59 @@
     </state>
     <state x="996" y="205" key="#com.intellij.ide.util.MemberChooser/0.0.1536.920@0.0.1536.920" timestamp="1602156258321" />
     <state x="1245" y="232" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1602788712327" />
-    <state x="689" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1602789071196">
+    <state x="689" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1604691807912">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="551" y="268" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.920@0.0.1536.920" timestamp="1596447982317" />
-    <state x="689" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602789071196" />
+    <state x="689" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604691807912" />
     <state x="565" y="347" width="406" height="235" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1601551894813">
       <screen x="0" y="0" width="1536" height="920" />
     </state>
     <state x="565" y="347" width="406" height="235" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.920@0.0.1536.920" timestamp="1601551894813" />
-    <state x="625" y="236" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602779586136">
+    <state x="625" y="236" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604691749002">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="500" y="209" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.920@0.0.1536.920" timestamp="1596447681470" />
-    <state x="625" y="236" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602779586136" />
+    <state x="625" y="236" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604691749002" />
     <state x="707" y="252" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1602782653351">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="252" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1602782653351" />
-    <state x="520" y="66" width="1105" height="901" key="CommitChangelistDialog2" timestamp="1602837439230">
+    <state x="520" y="66" width="1105" height="901" key="CommitChangelistDialog2" timestamp="1604606348579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="416" y="58" key="CommitChangelistDialog2/0.0.1536.920@0.0.1536.920" timestamp="1602156495728" />
-    <state x="520" y="66" width="1105" height="901" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1602837439230" />
+    <state x="520" y="66" width="1105" height="901" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1604606348579" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1602858657679">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602858657679" />
-    <state width="1877" height="215" key="GridCell.Tab.0.bottom" timestamp="1603444078081">
+    <state width="1877" height="215" key="GridCell.Tab.0.bottom" timestamp="1604697852864">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="214" key="GridCell.Tab.0.bottom/0.0.1536.920/1066.-1080.1920.1040@0.0.1536.920" timestamp="1597436927053" />
     <state width="1877" height="214" key="GridCell.Tab.0.bottom/0.0.1536.920/1066.-1080.1920.1040@1066.-1080.1920.1040" timestamp="1597433283642" />
     <state width="1493" height="236" key="GridCell.Tab.0.bottom/0.0.1536.920@0.0.1536.920" timestamp="1602760613308" />
-    <state width="1877" height="215" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603444078081" />
-    <state width="1877" height="215" key="GridCell.Tab.0.center" timestamp="1603444078081">
+    <state width="1877" height="215" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604697852864" />
+    <state width="1877" height="215" key="GridCell.Tab.0.center" timestamp="1604697852864">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="214" key="GridCell.Tab.0.center/0.0.1536.920/1066.-1080.1920.1040@0.0.1536.920" timestamp="1597436927053" />
     <state width="1877" height="214" key="GridCell.Tab.0.center/0.0.1536.920/1066.-1080.1920.1040@1066.-1080.1920.1040" timestamp="1597433283642" />
     <state width="1493" height="236" key="GridCell.Tab.0.center/0.0.1536.920@0.0.1536.920" timestamp="1602760613308" />
-    <state width="1877" height="215" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603444078081" />
-    <state width="1877" height="215" key="GridCell.Tab.0.left" timestamp="1603444078081">
+    <state width="1877" height="215" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604697852864" />
+    <state width="1877" height="215" key="GridCell.Tab.0.left" timestamp="1604697852863">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="214" key="GridCell.Tab.0.left/0.0.1536.920/1066.-1080.1920.1040@0.0.1536.920" timestamp="1597436927053" />
     <state width="1877" height="214" key="GridCell.Tab.0.left/0.0.1536.920/1066.-1080.1920.1040@1066.-1080.1920.1040" timestamp="1597433283641" />
     <state width="1493" height="236" key="GridCell.Tab.0.left/0.0.1536.920@0.0.1536.920" timestamp="1602760613308" />
-    <state width="1877" height="215" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603444078081" />
-    <state width="1877" height="215" key="GridCell.Tab.0.right" timestamp="1603444078081">
+    <state width="1877" height="215" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604697852863" />
+    <state width="1877" height="215" key="GridCell.Tab.0.right" timestamp="1604697852864">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="214" key="GridCell.Tab.0.right/0.0.1536.920/1066.-1080.1920.1040@0.0.1536.920" timestamp="1597436927053" />
     <state width="1877" height="214" key="GridCell.Tab.0.right/0.0.1536.920/1066.-1080.1920.1040@1066.-1080.1920.1040" timestamp="1597433283642" />
     <state width="1493" height="236" key="GridCell.Tab.0.right/0.0.1536.920@0.0.1536.920" timestamp="1602760613308" />
-    <state width="1877" height="215" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603444078081" />
+    <state width="1877" height="215" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604697852864" />
     <state width="1877" height="494" key="GridCell.Tab.1.bottom" timestamp="1602792751705">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -410,16 +416,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="285" y="89" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602859140838" />
-    <state x="453" y="220" key="Vcs.Push.Dialog.v2" timestamp="1602837441443">
+    <state x="453" y="220" key="Vcs.Push.Dialog.v2" timestamp="1604606357267">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="362" y="195" key="Vcs.Push.Dialog.v2/0.0.1536.920@0.0.1536.920" timestamp="1602156499162" />
-    <state x="453" y="220" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602837441443" />
-    <state x="661" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1604605978646">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="453" y="220" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1604606357267" />
+    <state x="661" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1605611613502">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1605611613502" />
     <state x="529" y="303" key="com.intellij.ide.util.TipDialog/0.0.1536.920@0.0.1536.920" timestamp="1597148501269" />
-    <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604605978646" />
+    <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604691662375" />
     <state x="509" y="408" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1602859133137">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

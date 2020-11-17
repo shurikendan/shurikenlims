@@ -1,0 +1,89 @@
+import com.github.lgooddatepicker.components.DateTimePicker;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
+
+public class TaskFrame extends JFrame implements ActionListener {
+    Container container = getContentPane();
+    DateTimePicker picker = new DateTimePicker();
+    JLabel label = new JLabel("New Task");
+    JPanel detailPanel = new JPanel();
+    JLabel detailLabel = new JLabel("Details: ");
+    JTextArea detailTextArea = new JTextArea(3, 20);
+    JScrollPane scrollPane = new JScrollPane(detailTextArea);
+    JPanel pickerPanel = new JPanel();
+    JPanel buttonPanel = new JPanel();
+    JButton saveButton = new JButton("Save");
+    JButton cancelButton = new JButton("Cancel");
+    Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
+    GridLayout layout = new GridLayout(0, 1);
+
+    TaskFrame() {
+        setLayoutManager();
+        addComponentsToContainer();
+        setSize();
+        setComponentProperties();
+        addActionListeners();
+
+    }
+
+    private void setLayoutManager() {
+        setLayout(layout);
+    }
+
+    private void addComponentsToContainer() {
+        container.add(label);
+
+        pickerPanel.add(picker);
+        container.add(pickerPanel);
+
+
+        detailPanel.add(detailLabel);
+        detailPanel.add(scrollPane);
+        container.add(detailPanel);
+
+        buttonPanel.add(cancelButton);
+        buttonPanel.add(saveButton);
+        container.add(buttonPanel);
+
+    }
+
+    private void setComponentProperties() {
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        label.setFont(label.getFont().deriveFont(20f));
+
+        detailLabel.setFont(detailLabel.getFont().deriveFont(15f));
+
+        detailTextArea.setBorder(border);
+    }
+
+    private void setSize() {
+        buttonPanel.setLayout(null);
+        cancelButton.setBounds(5,15,130,30);
+        saveButton.setBounds(145, 15, 130, 30);
+    }
+
+    private void addActionListeners() {
+        cancelButton.addActionListener(this);
+        saveButton.addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == cancelButton) {
+            super.dispose();
+        }
+        else {
+            if(actionEvent.getSource() == saveButton) {
+                String message = detailTextArea.getText();
+                String due = picker.getDatePicker().getText();
+                Base.writeTaskToDatabase(message, due);
+            }
+        }
+    }
+}

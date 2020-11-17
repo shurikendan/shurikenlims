@@ -4,7 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 public class LandingTNFrame extends JFrame implements ActionListener {
     Container container = getContentPane();
@@ -105,7 +107,7 @@ public class LandingTNFrame extends JFrame implements ActionListener {
             PracticalBook.main(null);
         }
         else if (tasksButton.equals(source)) {
-            Base.getPracticalFromDatabase();
+            Task.main(null);
         }
         else if (databaseButton.equals(source)) {
             BaseView.main(null);
@@ -118,10 +120,19 @@ public class LandingTNFrame extends JFrame implements ActionListener {
             builder.append(value);
         }
         String practicalsData = builder.toString();
+
+        StringBuilder buildertwo = new StringBuilder();
+        for (String valuetwo : Base.getTasksFromDatabase()) {
+            buildertwo.append(valuetwo);
+        }
+        String tasksData = buildertwo.toString();
         //String practicalsData = Arrays.toString(Base.getPracticalFromDatabase());
-        overviewTextArea.setText("Tasks due for week commencing 12/10/20:\n\nNo Tasks " +
-                "Found\n\nPracticals due:\n\n" + practicalsData);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        overviewTextArea.setText("Upcoming tasks for " + formatter.format(date) + ":\n\n" + tasksData +
+                "\n\nPracticals due:\n\n" + practicalsData);
+
+
         overviewTextArea.setFont(calView.getFont().deriveFont(15f));
-        System.out.println(Base.fetchTasks());
     }
 }

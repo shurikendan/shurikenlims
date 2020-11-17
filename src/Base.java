@@ -163,6 +163,35 @@ public class Base {
         return returnArray;
     }
 
+    public static void writeTaskToDatabase(String message, String due) {
+        String[] sql = {
+                "INSERT INTO tasks (message, due) VALUES (" + "'" + message + "'" + ", "
+                        + "'" + due + "'" + ");"
+        };
+        System.out.println(sql);
+        executeStatement(sql);
+        System.out.println("[DEBUG] [DATABASE WRITE] Reminder written to database");
+    }
+
+    public static String[] getTasksFromDatabase() {
+        String sql = "SELECT message, due FROM tasks;";
+        String[] returnArray = {};
+        try (Connection connection = DriverManager.getConnection(url)) {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()) {
+                String message = rs.getString("message");
+                String due = rs.getString("due");
+                String bigString = message + " / " + due + "\n";
+                returnArray = ArrayUtils.add(returnArray, bigString);
+                System.out.println(Arrays.toString(returnArray));
+            }
+        }
+        catch (SQLException e) {
+            e.getStackTrace();
+        }
+        return returnArray;
+    }
 
     /**
      * Executes sql statement passed in
