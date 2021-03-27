@@ -1,1 +1,2 @@
-Don't ask why 90% of this uses absolute spacing...
+<h1>LIMS</h1>
+<p>This was the program I wrote for my A-Level Computer Science coursework. It was my first ever attempt at using Java, as well as creating a proper functioning interface. Most of the code is either bodged together or adapted from the internet. There are many lessons I've learnt from writing this, which I hope to use in future projects. Please do not attempt to ressurect this code :3</p>
